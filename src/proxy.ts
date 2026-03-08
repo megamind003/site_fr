@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
-export function middleware(request: Request) {
+export function proxy(request: Request) {
   const { pathname } = new URL(request.url);
 
   const pathnameHasLocale = routing.locales.some(

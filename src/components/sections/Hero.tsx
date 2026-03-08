@@ -5,6 +5,10 @@ export interface HeroProps {
   title: string
   subtitle?: string
   description?: string
+  badges?: {
+    label: string
+    variant?: 'terracotta' | 'ocean' | 'cream'
+  }[]
   ctaPrimary?: {
     label: string
     href: string
@@ -22,6 +26,7 @@ export function Hero({
   title,
   subtitle,
   description,
+  badges,
   ctaPrimary,
   ctaSecondary,
   backgroundImage,
@@ -74,6 +79,23 @@ export function Hero({
         !hasBackground && 'bg-gradient-to-br from-brand-ocean-950 via-brand-ocean-800 to-brand-terracotta-800 min-h-[90vh] flex items-center'
       )}>
         <div className="max-w-5xl mx-auto text-center">
+          {badges && badges.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-2 mb-4 animate-fade-in">
+              {badges.map((badge, i) => (
+                <span
+                  key={i}
+                  className={cn(
+                    "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide",
+                    badge.variant === 'terracotta' && 'bg-brand-terracotta-500 text-white',
+                    badge.variant === 'ocean' && 'bg-brand-ocean-500 text-white',
+                    badge.variant === 'cream' && 'bg-brand-cream-200 text-brand-ocean-900'
+                  )}
+                >
+                  {badge.label}
+                </span>
+              ))}
+            </div>
+          )}
           {subtitle && (
             <p className={cn(
               "font-semibold tracking-wider uppercase text-xs md:text-sm mb-4 animate-fade-in",

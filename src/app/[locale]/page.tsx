@@ -5,6 +5,10 @@ import { MenuSection } from '@/components/sections/MenuSection';
 import { Container } from '@/components/layout/Grid';
 import { Section } from '@/components/ui/Section';
 import { FeatureCard } from '@/components/features/Cards';
+import { DailyMenuBoard } from '@/components/features/DailyMenuBoard';
+import { PranzoCenaInfo } from '@/components/features/PranzoCenaInfo';
+import { WeeklySpecials } from '@/components/features/WeeklySpecials';
+import { BeverageSection } from '@/components/features/BeverageSection';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DietaryType } from '@/components/ui/Badge';
 
@@ -17,21 +21,27 @@ type Props = {
 };
 
 export default async function HomePage({ params }: Props) {
-  const { locale } = params;
+  const { locale } = await params;
   setRequestLocale(locale);
   
-  const [nav, hero, menu, features, footer] = await Promise.all([
+  const [nav, hero, menu, features, footer, menuNotice, pranzoCena, weeklySpecials, beverages] = await Promise.all([
     getTranslations('Nav'),
     getTranslations('Hero'),
     getTranslations('Menu'),
     getTranslations('Features'),
     getTranslations('Footer'),
+    getTranslations('MenuNotice'),
+    getTranslations('PranzoCena'),
+    getTranslations('WeeklySpecials'),
+    getTranslations('Beverages'),
   ]);
 
   const navItems = [
-    { label: nav('menu'), href: '/menu' },
-    { label: nav('about'), href: '/chi-siamo' },
-    { label: nav('contact'), href: '/contatti' },
+    { label: nav('home'), href: `/${locale}` },
+    { label: nav('menu'), href: `/${locale}/menu` },
+    { label: nav('about'), href: `/${locale}/chi-siamo` },
+    { label: nav('events'), href: `/${locale}/eventi` },
+    { label: nav('contact'), href: `/${locale}/contatti` },
   ];
 
   const featureItems = features.raw('items') as Array<{
@@ -60,19 +70,31 @@ export default async function HomePage({ params }: Props) {
     <>
       <NavBar 
         items={navItems} 
-        ctaPrimary={{ label: nav('reserve'), href: '/prenota' }} 
-        ctaSecondary={{ label: nav('menu'), href: '/menu' }}
+        ctaPrimary={{ label: nav('reserve'), href: `/${locale}/contatti` }} 
+        ctaSecondary={{ label: nav('menu'), href: `/${locale}/menu` }}
       />
       
       <Hero
         title={hero('title')}
         subtitle={hero('subtitle')}
         description={hero('description')}
-        ctaPrimary={{ label: hero('ctaPrimary'), href: '/menu' }}
-        ctaSecondary={{ label: hero('ctaSecondary'), href: '/contatti' }}
+        badges={[
+          { label: 'Pizzeria', variant: 'terracotta' },
+          { label: 'Tavola Calda', variant: 'ocean' },
+        ]}
+        ctaPrimary={{ label: hero('ctaPrimary'), href: `/${locale}/menu` }}
+        ctaSecondary={{ label: hero('ctaSecondary'), href: `/${locale}/contatti` }}
       />
 
-      <section id="features" className="py-20 bg-gradient-to-br from-brand-ocean-50 via-white to-brand-terracotta-50">
+      <DailyMenuBoard />
+
+      <PranzoCenaInfo />
+
+      <WeeklySpecials />
+
+      <BeverageSection />
+
+      <Section id="features" variant="gradient-mesh">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureItems.map((feature, i) => (
@@ -85,7 +107,7 @@ export default async function HomePage({ params }: Props) {
             ))}
           </div>
         </Container>
-      </section>
+      </Section>
 
       <MenuSection
         title={menu('sectionTitle')}
@@ -104,7 +126,7 @@ export default async function HomePage({ params }: Props) {
               Ti aspettiamo per un'esperienza culinaria indimenticabile
             </p>
             <a
-              href="/contatti"
+              href={`/${locale}/contatti`}
               className="inline-flex items-center gap-2 bg-white text-brand-terracotta-600 px-8 py-4 rounded-full font-semibold hover:bg-brand-cream-100 transition-all shadow-lg hover:shadow-xl"
             >
               Prenota un Tavolo
@@ -122,8 +144,8 @@ export default async function HomePage({ params }: Props) {
           city: 'Cerveteri RM',
         }}
         contact={{
-          phone: '+39 06 1234567',
-          email: 'info@damassy.it',
+          phone: footer('phoneValue'),
+          email: footer('emailValue'),
         }}
         hours={footer('hoursValue')}
         social={[

@@ -1,202 +1,246 @@
-export const en = {
+import type { Messages } from 'next-intl';
+
+export default {
   Meta: {
-    title: "Da Massy - Mixed Cuisine Restaurant in Cerveteri",
-    description:
-      "Discover authentic flavors of tradition between land and sea. Book your table at Da Massy in Cerveteri, steps from the UNESCO Necropolis.",
+    title: 'Da Massy In Rosticceria | Pizzeria and Tavola Calda in Cerveteri',
+    description: 'Pizzeria and hot table since 1986. Daily changing menu, pizza always available. Visit us at Via Prato del Cavaliere 7, Cerveteri RM.',
   },
   Nav: {
-    home: "Home",
-    menu: "Menu",
-    about: "About Us",
-    events: "Events",
-    contact: "Contact",
-    reserve: "Reserve",
+    home: 'Home',
+    menu: 'Menu',
+    about: 'About Us',
+    events: 'Events',
+    contact: 'Contact',
+    reserve: 'Book',
   },
   Hero: {
-    subtitle: "Welcome to Da Massy",
-    title: "The Authentic Taste of Cerveteri",
-    description:
-      "Where the culinary tradition of the Etruscan hinterland meets the freshness of the Tyrrhenian Sea. A unique gastronomic experience, between land and sea.",
-    ctaPrimary: "Book a Table",
-    ctaSecondary: "View Menu",
+    subtitle: 'Pizzeria & Tavola Calda',
+    title: 'Da Massy In Rosticceria',
+    description: 'The menu changes every day. Pizza always available, hot table at lunch.',
+    ctaPrimary: "Discover Today's Menu",
+    ctaSecondary: 'Book a Table',
   },
-  Features: {
-    sectionTitle: "Why Choose Us",
-    sectionSubtitle: "An unforgettable culinary experience",
-    items: [
-      {
-        title: "Mixed Cuisine",
-        description:
-          "The best of Roman and Lazio tradition combined with the freshest catch from the Tyrrhenian Sea.",
-        icon: "utensils",
-      },
-      {
-        title: "Local Ingredients",
-        description:
-          "We select only km 0 products from Cerveteri producers and nearby coasts.",
-        icon: "leaf",
-      },
-      {
-        title: "Welcoming Atmosphere",
-        description:
-          "A family-friendly yet refined environment, perfect for romantic dinners or family lunches.",
-        icon: "heart",
-      },
-      {
-        title: "Regional Wines",
-        description:
-          "A curated wine cellar with the best labels from Cerveteri and Lazio wines.",
-        icon: "wine",
-      },
+  MenuNotice: {
+    title: 'Daily Changing Menu',
+    description: 'Our offerings change daily based on ingredient freshness.',
+    disclaimer: 'Dishes shown are examples of our categories. Ask in store for today menu.',
+  },
+  PranzoCena: {
+    title: 'Lunch and Dinner',
+    pranzoTitle: 'Lunch (12:00 - 14:00)',
+    pranzoDescription: 'Complete hot table with pizza counter, side dishes, first and second courses.',
+    cenaTitle: 'Dinner',
+    cenaDescription: 'Focus on pizza. Full counter not available in the evening.',
+    alwaysAvailable: 'Pizza counter active all day',
+  },
+  WeeklySpecials: {
+    title: 'Weekly Specials',
+    subtitle: 'Fixed appointments every week',
+    thursday: {
+      title: 'Thursday Gnocchi',
+      description: 'Homemade gnocchi every Thursday',
+    },
+    friday: {
+      title: 'Friday Fish',
+      description: 'Fresh seafood offerings every Friday',
+    },
+    daily: {
+      title: 'Dessert of the Day',
+      description: 'A different homemade dessert every day',
+    },
+  },
+  Beverages: {
+    title: 'Beverages',
+    subtitle: 'Wine, beer and soft drinks',
+    wineDraft: 'Draft wine',
+    beerDraft: 'Draft beer',
+    bottled: 'Bottles and cans in fridge',
+    description: 'Wide selection of draft wines and beers available by the glass or on tap.',
+  },
+  Prices: {
+    disclaimer: 'Prices subject to change. Ask in store for updated price list.',
+    primiFrom: 'First courses from €6',
+    byWeight: 'Many offerings available by weight',
+  },
+  Identity: {
+    tagline: 'Pizzeria and Tavola Calda since 1986',
+    description: 'Da Massy In Rosticceria: pizza always available, hot table at lunch with complete counter of side dishes, first and second courses.',
+    highlights: [
+      'Sliced pizza always available',
+      'Highly appreciated side dish counter',
+      'Daily changing menu',
     ],
   },
   Menu: {
-    sectionTitle: "Our Dishes",
-    sectionSubtitle: "Tradition and innovation in every course",
-    categories: ["Land", "Sea", "First Courses", "Second Courses", "Desserts"],
-    viewFull: "View Full Menu",
-    title: "Our Menu",
-    subtitle: "Discover our dishes",
-    cta: "Order Now",
+    title: 'Our Menu',
+    subtitle: 'Discover our offerings',
+    sectionTitle: 'Our Offerings',
+    sectionSubtitle: 'Menu categories',
+    cta: 'Learn More',
+    categories: ['Appetizers', 'First Courses', 'Second Courses', 'Pizza', 'Desserts'],
     dishes: {
       terra: {
-        name: "Etruscan Platter",
-        description: "Selection of local cured meats and cheeses with honey and jams",
+        name: 'Land Dishes',
+        description: 'Meat and seasonal vegetables',
       },
       mare: {
-        name: "Raw Seafood",
-        description: "Selection of the catch of the day, oysters, red prawns and scampi",
+        name: 'Sea Dishes',
+        description: 'Fresh fish of the day',
       },
       pizza: {
-        name: "Authentic Margherita Pizza",
-        description: "San Marzano tomatoes, DOP buffalo mozzarella from Campania, fresh basil",
+        name: 'Sicilian Pizza',
+        description: 'Always available',
       },
       carbonara: {
-        name: "Spaghettoni alla Carbonara",
-        description: "Crispy guanciale, DOP pecorino romano, organic eggs, black pepper",
+        name: 'Carbonara',
+        description: 'The classic Roman dish',
       },
       spaghetti: {
-        name: "Spaghetti with Clams",
-        description: "Fresh clams, garlic, parsley, chili pepper, deglazed with white wine",
+        name: 'Spaghetti with Tomato Sauce',
+        description: 'Simple and genuine',
       },
       tiramisu: {
-        name: "House Tiramisu",
-        description: "Artisanal ladyfingers, mascarpone cream, espresso coffee, bitter cocoa",
+        name: 'Tiramisu',
+        description: 'Homemade',
       },
     },
   },
-  About: {
-    sectionTitle: "Our Story",
-    sectionSubtitle: "Serving you since 1985",
-    title: "Da Massy: More Than a Restaurant, a Family",
-    description:
-      "Born from Massy's dream to bring authentic Cerveteri cuisine to the table, our restaurant has become a reference point for those seeking authenticity and quality. Every dish tells the story of our land, every ingredient is chosen with the same care we would use for our own family.",
-    features: {
-      tradition: {
-        title: "Tradition",
-        description: "Recipes passed down through generations",
+  Features: {
+    sectionTitle: 'Why Choose Us',
+    sectionSubtitle: 'Our philosophy',
+    items: [
+      {
+        icon: 'utensils',
+        title: 'Daily Kitchen',
+        description: 'The menu changes every day to always offer you something fresh and new.',
       },
-      sea: {
-        title: "Fresh Seafood",
-        description: "Daily catch from the Tyrrhenian Sea",
+      {
+        icon: 'leaf',
+        title: 'Fresh Ingredients',
+        description: 'We select the best ingredients from the market every morning.',
       },
-      territory: {
-        title: "Local Territory",
-        description: "Km 0 local products",
+      {
+        icon: 'heart',
+        title: 'Passion since 1986',
+        description: 'Almost 40 years of experience in quality dining.',
       },
-    },
-    stats: [
-      { value: "38", label: "Years of History" },
-      { value: "50+", label: "Dishes on Menu" },
-      { value: "10000+", label: "Happy Customers" },
+      {
+        icon: 'wine',
+        title: 'Draft Wines',
+        description: 'Wide selection of draft wines and premium bottles.',
+      },
     ],
   },
+  About: {
+    sectionTitle: 'Our Story',
+    sectionSubtitle: 'Almost 40 years of tradition',
+    description: "Da Massy In Rosticceria is a reference point in Cerveteri for those seeking a quality pizzeria and a hot table where to have a quick lunch without sacrificing taste.",
+    features: [
+      'Pizza counter always active',
+      'Hot table at lunch with various side dishes',
+      'Menu that changes every day',
+      'Draft wines and beers on tap',
+    ],
+    stats: {
+      years: '38',
+      yearsLabel: 'Years of Activity',
+      dishes: '50+',
+      dishesLabel: 'Dishes Daily',
+      customers: '10000+',
+      customersLabel: 'Happy Customers',
+    },
+  },
   Reservation: {
-    sectionTitle: "Book a Table",
-    sectionSubtitle: "Secure your spot at Da Massy. We respond within 24 hours.",
-    name: "Full Name",
-    email: "Email",
-    phone: "Phone",
-    guests: "Guests",
-    date: "Date",
-    time: "Time",
-    notes: "Special Requests",
-    submit: "Request Reservation",
-    submitting: "Sending...",
+    sectionTitle: 'Book a Table',
+    sectionSubtitle: 'We are waiting for you',
+    name: 'Name',
+    email: 'Email',
+    phone: 'Phone',
+    guests: 'Number of Guests',
+    date: 'Date',
+    time: 'Time',
+    notes: 'Special Requests',
+    submit: 'Request Reservation',
+    success: 'Request sent! We will contact you to confirm.',
+    error: 'An error occurred. Please try again later.',
   },
   Footer: {
-    tagline: "The authentic taste of Cerveteri, between land and sea.",
-    quickLinks: "Quick Links",
-    contact: "Contact",
-    hours: "Hours",
-    hoursValue: "Wed-Mon: 09:30-22:00 | Tue: Closed",
-    address: "Address",
-    addressValue: "Via Prato del Cavaliere, 7, 00052 Cerveteri RM, Italy",
-    phone: "Phone",
-    email: "Email",
-    copyright: "Da Massy Ristorante. All rights reserved.",
-    privacy: "Privacy Policy",
-    cookies: "Cookie Policy",
+    tagline: 'Pizzeria and Tavola Calda since 1986',
+    addressTitle: 'Address',
+    addressValue: 'Via Prato del Cavaliere 7, 00052 Cerveteri RM',
+    contactTitle: 'Contacts',
+    phoneTitle: 'Phone',
+    phoneValue: '+39 06 995 3303',
+    emailTitle: 'Email',
+    emailValue: 'info@damassy.it',
+    hoursTitle: 'Current Hours',
+    hoursValue: 'Mon-Fri: 8:30 - 15:30 | Fri-Sat: 8:30 - 21:30',
+    hoursDisclaimer: 'Provisional hours - subject to change. Contact us for confirmation.',
+    followUs: 'Follow Us',
+    copyright: '© 2026 Da Massy In Rosticceria. All rights reserved.',
   },
   Contact: {
-    sectionTitle: "Visit Us",
-    sectionSubtitle: "We're waiting for you for an unforgettable experience",
-    locationTitle: "Where We Are",
-    locationDescription:
-      "Located in the heart of Cerveteri, just minutes from the UNESCO Banditaccia Necropolis.",
-    hoursTitle: "Opening Hours",
-    lunch: "Lunch",
-    dinner: "Dinner",
-    closed: "Closed",
-    contactTitle: "Contact Us",
-    title: "Contact",
-    subtitle: "We are here for you",
+    title: 'Contact Us',
+    subtitle: 'We are here for you',
+    phone: {
+      label: 'Phone',
+      value: '+39 06 995 3303',
+    },
+    email: {
+      label: 'Email',
+      value: 'info@damassy.it',
+    },
+    address: {
+      title: 'Address',
+      street: 'Via Prato del Cavaliere 7',
+      cap: '00052',
+      city: 'Cerveteri',
+      province: 'RM',
+    },
+    hours: {
+      title: 'Hours',
+      value: 'Mon-Fri: 8:30 - 15:30',
+      disclaimer: 'Provisional hours - subject to change',
+    },
   },
   Events: {
-    navCta: "Book Now",
     hero: {
-      "title": "Private Events & Celebrations",
-      "subtitle": "Unforgettable Moments",
-      "description": "From business dinners to birthdays, we make every special occasion a unique gastronomic experience.",
-      "cta": "Request a Quote"
+      title: 'Events and Celebrations',
+      subtitle: 'Make your moments special',
+      description: 'We organize birthdays, weddings and corporate events with customized menus.',
     },
-    "featuresTitle": "Our Proposals",
-    "featuresSubtitle": "Tailored solutions for every type of event",
-    "types": {
-      "birthday": {
-        "title": "Birthdays",
-        "description": "Celebrate your special day with authentic Neapolitan pizza and a welcoming atmosphere."
+    features: [
+      {
+        title: 'Birthdays',
+        description: 'Celebrate your special day with friends and family.',
+        capacity: 'Up to 50 people',
       },
-      "wedding": {
-        "title": "Weddings",
-        "description": "Intimate and refined receptions with personalized menus for your most beautiful day."
+      {
+        title: 'Weddings',
+        description: 'Intimate receptions and trial dinners.',
+        capacity: 'Up to 80 people',
       },
-      "business": {
-        "title": "Business Dinners",
-        "description": "The ideal environment for team building and business dinners in a relaxed atmosphere."
+      {
+        title: 'Corporate Events',
+        description: 'Business lunches and gala dinners.',
+        capacity: 'Up to 60 people',
       },
-      "special": {
-        "title": "Special Occasions",
-        "description": "Anniversaries, graduations or simple gatherings with friends: any excuse is good to celebrate."
-      }
+      {
+        title: 'Special Occasions',
+        description: 'Anniversaries, graduations and much more.',
+        capacity: 'Tailored for you',
+      },
+    ],
+    cta: {
+      title: 'Talk to Us',
+      description: 'Contact us to discuss your event.',
+      button: 'Request Information',
     },
-    "capacity": {
-      "title": "Space & Versatility",
-      "description": "Our room can be configured to accommodate groups of different sizes, always ensuring comfort and privacy.",
-      "label": "People",
-      "imagePlaceholder": "Photo of the set-up room"
-    },
-    "galleryTitle": "Our Events",
-    "cta": {
-      "title": "Contact us for your event",
-      "description": "We are at your disposal to create a personalized menu and organize every detail.",
-      "button": "Talk to us"
-    }
   },
   Common: {
-    learnMore: "Learn More",
-    bookNow: "Book Now",
-    callUs: "Call Us",
-    scrollToTop: "Back to top",
+    loading: 'Loading...',
+    error: 'An error occurred',
+    retry: 'Retry',
+    learnMore: 'Learn more',
   },
-}
+} satisfies Messages;

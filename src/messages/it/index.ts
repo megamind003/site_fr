@@ -1,202 +1,266 @@
-export const it = {
+import type { Messages } from 'next-intl';
+
+export default {
   Meta: {
-    title: "Da Massy - Ristorante Cucina Mista a Cerveteri",
-    description:
-      "Scopri i sapori autentici della tradizione tra terra e mare. Prenota il tuo tavolo da Da Massy a Cerveteri, a due passi dalla Necropoli UNESCO.",
+    title: 'Da Massy In Rosticceria | Pizzeria e Tavola Calda a Cerveteri',
+    description: 'Pizzeria e tavola calda dal 1986. Menu variabile ogni giorno, pizza sempre disponibile. Vieni a trovarci in Via Prato del Cavaliere 7, Cerveteri RM.',
   },
   Nav: {
-    home: "Home",
-    menu: "Menu",
-    about: "Chi Siamo",
-    events: "Eventi",
-    contact: "Contatti",
-    reserve: "Prenota",
+    home: 'Home',
+    menu: 'Menu',
+    about: 'Chi Siamo',
+    events: 'Eventi',
+    contact: 'Contatti',
+    reserve: 'Prenota',
   },
   Hero: {
-    subtitle: "Benvenuti da Da Massy",
-    title: "Il Sapore Autentico di Cerveteri",
-    description:
-      "Dove la tradizione culinaria dell'entroterra etrusco incontra la freschezza del mare Tirreno. Un'esperienza gastronomica unica, tra terra e mare.",
-    ctaPrimary: "Prenota un Tavolo",
-    ctaSecondary: "Scopri il Menu",
+    subtitle: 'Pizzeria & Tavola Calda',
+    title: 'Da Massy In Rosticceria',
+    description: 'Ogni giorno il menu cambia. Pizza sempre disponibile, tavola calda a pranzo.',
+    ctaPrimary: 'Scopri il Menu di Oggi',
+    ctaSecondary: 'Prenota un Tavolo',
   },
-  Features: {
-    sectionTitle: "Perché Sceglierci",
-    sectionSubtitle: "Un'esperienza culinaria indimenticabile",
-    items: [
-      {
-        title: "Cucina Mista",
-        description:
-          "Il meglio della tradizione romana e laziale unito al freschissimo pescato del Tirreno.",
-        icon: "utensils",
-      },
-      {
-        title: "Ingredienti Locali",
-        description:
-          "Selezioniamo solo prodotti a km 0 dai produttori ceretani e dalle coste limitrofe.",
-        icon: "leaf",
-      },
-      {
-        title: "Atmosfera Accogliente",
-        description:
-          "Un ambiente familiare e raffinato, perfetto per cene romantiche o pranzi in famiglia.",
-        icon: "heart",
-      },
-      {
-        title: "Vini del Territorio",
-        description:
-          "Una cantina curata con le migliori etichette dei vini di Cerveteri e del Lazio.",
-        icon: "wine",
-      },
+  MenuNotice: {
+    title: 'Menu Variabile Ogni Giorno',
+    description: 'Le nostre proposte cambiano quotidianamente in base alla freschezza degli ingredienti.',
+    disclaimer: 'I piatti mostrati sono esempi delle nostre categorie. Chiedi in negozio per il menu del giorno.',
+  },
+  PranzoCena: {
+    title: 'Pranzo e Cena',
+    pranzoTitle: 'Pranzo (12:00 - 14:00)',
+    pranzoDescription: 'Tavola calda completa con bancone pizza, contorni, primi e secondi.',
+    cenaTitle: 'Cena',
+    cenaDescription: 'Focus sulla pizza. Il bancone completo non è disponibile la sera.',
+    alwaysAvailable: 'Bancone pizza attivo tutto il giorno',
+  },
+  WeeklySpecials: {
+    title: 'Ricorrenze Settimanali',
+    subtitle: 'Appuntamenti fissi ogni settimana',
+    thursday: {
+      title: 'Giovedì Gnocchi',
+      description: 'Ogni giovedì gnocchi fatti in casa',
+    },
+    friday: {
+      title: 'Venerdì Pesce',
+      description: 'Ogni venerdì proposte di mare fresche',
+    },
+    daily: {
+      title: 'Dolce del Giorno',
+      description: 'Ogni giorno un dolce diverso fatto in casa',
+    },
+  },
+  Beverages: {
+    title: 'Bevande',
+    subtitle: 'Vino, birra e analcolici',
+    wineDraft: 'Vino sfuso alla spina',
+    beerDraft: 'Birra alla spina',
+    bottled: 'Bottiglie e lattine in frigo',
+    description: 'Ampia selezione di vini sfusi e birre disponibili al calice o alla spina.',
+  },
+  Prices: {
+    disclaimer: 'Prezzi soggetti a variazione. Chiedi in negozio per il listino aggiornato.',
+    primiFrom: 'Primi a partire da €6',
+    byWeight: 'Molte proposte disponibili al peso',
+  },
+  Identity: {
+    tagline: 'Pizzeria e Tavola Calda dal 1986',
+    description: 'Da Massy In Rosticceria: pizza sempre disponibile, tavola calda a pranzo con bancone completo di contorni, primi e secondi.',
+    highlights: [
+      'Pizza al taglio sempre disponibile',
+      'Bancone contorni molto apprezzato',
+      'Menu variabile ogni giorno',
     ],
   },
   Menu: {
-    sectionTitle: "I Nostri Piatti",
-    sectionSubtitle: "Tradizione e innovazione in ogni portata",
-    categories: ["Terra", "Mare", "Primi", "Secondi", "Dolci"],
-    viewFull: "Vedi Menu Completo",
-    title: "Il Nostro Menu",
-    subtitle: "Scopri i nostri piatti",
-    cta: "Ordina Ora",
+    title: 'Il Nostro Menu',
+    subtitle: 'Scopri le nostre proposte',
+    sectionTitle: 'Le Nostre Proposte',
+    sectionSubtitle: 'Categorie del nostro menu',
+    cta: 'Scopri di Più',
+    categories: ['Antipasti', 'Primi', 'Secondi', 'Pizza', 'Dolci'],
     dishes: {
       terra: {
-        name: "Tagliere Etrusco",
-        description: "Selezione di salumi e formaggi locali con miele e confetture",
+        name: 'Piatti di Terra',
+        description: 'Carni e verdure di stagione',
       },
       mare: {
-        name: "Crudo di Mare",
-        description: "Selezione del pescato del giorno, ostriche, gamberi rossi e scampi",
+        name: 'Piatti di Mare',
+        description: 'Pesce fresco del giorno',
       },
       pizza: {
-        name: "Pizza Margherita Verace",
-        description: "Pomodoro San Marzano, mozzarella di bufala campana DOP, basilico fresco",
+        name: 'Pizza al Taglio',
+        description: 'Sempre disponibile',
       },
       carbonara: {
-        name: "Spaghettoni alla Carbonara",
-        description: "Guanciale croccante, pecorino romano DOP, uova biologiche, pepe nero",
+        name: 'Carbonara',
+        description: 'La classica romana',
       },
       spaghetti: {
-        name: "Spaghetti alle Vongole Veraci",
-        description: "Vongole veraci, aglio, prezzemolo, peperoncino, sfumati al vino bianco",
+        name: 'Spaghetti al Pomodoro',
+        description: 'Semplici e genuini',
       },
       tiramisu: {
-        name: "Tiramisù della Casa",
-        description: "Savoiardi artigianali, crema al mascarpone, caffè espresso, cacao amaro",
+        name: 'Tiramisù',
+        description: 'Fatto in casa',
       },
     },
   },
-  About: {
-    sectionTitle: "La Nostra Storia",
-    sectionSubtitle: "Dal 1985 a tavola con voi",
-    title: "Da Massy: più di un ristorante, una famiglia",
-    description:
-      "Nato dal sogno di Massy di portare in tavola la vera cucina ceretana, il nostro ristorante è diventato punto di riferimento per chi cerca autenticità e qualità. Ogni piatto racconta la nostra terra, ogni ingrediente è scelto con la stessa cura con cui sceglieremmo per la nostra famiglia.",
-    features: {
-      tradition: {
-        title: "Tradizione",
-        description: "Ricette tramandate da generazioni",
+  Features: {
+    sectionTitle: 'Perché Sceglierci',
+    sectionSubtitle: 'La nostra filosofia',
+    items: [
+      {
+        icon: 'utensils',
+        title: 'Cucina Quotidiana',
+        description: 'Ogni giorno il menu cambia per offrirti sempre qualcosa di fresco e nuovo.',
       },
-      sea: {
-        title: "Mare Fresco",
-        description: "Pescato quotidiano dal Tirreno",
+      {
+        icon: 'leaf',
+        title: 'Ingredienti Freschi',
+        description: 'Selezioniamo ogni mattina gli ingredienti migliori dal mercato.',
       },
-      territory: {
-        title: "Territorio",
-        description: "Prodotti locali a km 0",
+      {
+        icon: 'heart',
+        title: 'Passione dal 1986',
+        description: 'Quasi 40 anni di esperienza nella ristorazione di qualità.',
       },
-    },
-    stats: [
-      { value: "38", label: "Anni di Storia" },
-      { value: "50+", label: "Piatti nel Menu" },
-      { value: "10000+", label: "Clienti Felici" },
+      {
+        icon: 'wine',
+        title: 'Vini Sfusi',
+        description: 'Ampia selezione di vini alla spina e bottiglie pregiate.',
+      },
     ],
   },
+  About: {
+    sectionTitle: 'La Nostra Storia',
+    sectionSubtitle: 'Quasi 40 anni di tradizione',
+    title: 'La Nostra Tradizione',
+    description: 'Da Massy In Rosticceria è un punto di riferimento a Cerveteri per chi cerca una pizzeria di qualità e una tavola calda dove pranzare velocemente senza rinunciare al gusto.',
+    features: {
+      tradition: {
+        title: 'Tradizione',
+        description: 'Dal 1986 serviamo la comunità di Cerveteri con passione e dedizione.',
+      },
+      sea: {
+        title: 'Pesce Fresco',
+        description: 'Selezione quotidiana di pesce fresco per le nostre proposte di mare.',
+      },
+      territory: {
+        title: 'Territorio',
+        description: 'Ingredienti locali e ricette della tradizione laziale.',
+      },
+    },
+    stats: {
+      years: '38',
+      yearsLabel: 'Anni di Attività',
+      dishes: '50+',
+      dishesLabel: 'Piatti al Giorno',
+      customers: '10000+',
+      customersLabel: 'Clienti Felici',
+    },
+  },
   Reservation: {
-    sectionTitle: "Prenota un Tavolo",
-    sectionSubtitle: "Assicurati il tuo posto da Da Massy. Rispondiamo entro 24 ore.",
-    name: "Nome Completo",
-    email: "Email",
-    phone: "Telefono",
-    guests: "Ospiti",
-    date: "Data",
-    time: "Orario",
-    notes: "Note Speciali",
-    submit: "Richiedi Prenotazione",
-    submitting: "Invio in corso...",
+    sectionTitle: 'Prenota un Tavolo',
+    sectionSubtitle: 'Ti aspettiamo',
+    name: 'Nome',
+    email: 'Email',
+    phone: 'Telefono',
+    guests: 'Numero di Ospiti',
+    date: 'Data',
+    time: 'Orario',
+    notes: 'Note Speciali',
+    submit: 'Richiedi Prenotazione',
+    success: 'Richiesta inviata! Ti contatteremo per confermare.',
+    error: 'Si è verificato un errore. Riprova più tardi.',
   },
   Footer: {
-    tagline: "Il sapore autentico di Cerveteri, tra terra e mare.",
-    quickLinks: "Link Rapidi",
-    contact: "Contatti",
-    hours: "Orari",
-    hoursValue: "Mer-Lun: 09:30-22:00 | Mar: Chiuso",
-    address: "Indirizzo",
-    addressValue: "Via Prato del Cavaliere, 7, 00052 Cerveteri RM",
-    phone: "Telefono",
-    email: "Email",
-    copyright: "Da Massy Ristorante. Tutti i diritti riservati.",
-    privacy: "Privacy Policy",
-    cookies: "Cookie Policy",
+    tagline: 'Pizzeria e Tavola Calda dal 1986',
+    addressTitle: 'Indirizzo',
+    addressValue: 'Via Prato del Cavaliere 7, 00052 Cerveteri RM',
+    contactTitle: 'Contatti',
+    phoneTitle: 'Telefono',
+    phoneValue: '+39 06 995 3303',
+    emailTitle: 'Email',
+    emailValue: 'info@damassy.it',
+    hoursTitle: 'Orari Attuali',
+    hoursValue: 'Lun-Ven: 8:30 - 15:30 | Ven-Sab: 8:30 - 21:30',
+    hoursDisclaimer: 'Orari provvisori - soggetti a variazione. Contattaci per conferma.',
+    followUs: 'Seguici',
+    copyright: '© 2026 Da Massy In Rosticceria. Tutti i diritti riservati.',
   },
   Contact: {
-    sectionTitle: "Vieni a Trovarci",
-    sectionSubtitle: "Ti aspettiamo per un'esperienza indimenticabile",
-    locationTitle: "Dove Siamo",
-    locationDescription:
-      "Situati nel cuore di Cerveteri, a pochi minuti dalla Necropoli UNESCO della Banditaccia.",
-    hoursTitle: "Orari di Apertura",
-    lunch: "Pranzo",
-    dinner: "Cena",
-    closed: "Chiuso",
-    contactTitle: "Contattaci",
-    title: "Contatti",
-    subtitle: "Siamo qui per te",
+    title: 'Contatti',
+    subtitle: 'Siamo qui per te',
+    phone: {
+      label: 'Telefono',
+      value: '+39 06 995 3303',
+    },
+    email: {
+      label: 'Email',
+      value: 'info@damassy.it',
+    },
+    address: {
+      title: 'Indirizzo',
+      street: 'Via Prato del Cavaliere 7',
+      cap: '00052',
+      city: 'Cerveteri',
+      province: 'RM',
+    },
+    hours: {
+      title: 'Orari',
+      value: 'Lun-Ven: 8:30 - 15:30',
+      disclaimer: 'Orari provvisori - soggetti a variazione',
+    },
   },
   Events: {
-    navCta: "Prenota",
     hero: {
-      "title": "Eventi Privati & Celebrazioni",
-      "subtitle": "Momenti Indimenticabili",
-      "description": "Dalle cene aziendali ai compleanni, rendiamo ogni tua occasione speciale un'esperienza gastronomica unica.",
-      "cta": "Richiedi Preventivo"
+      title: 'Eventi e Celebrazioni',
+      subtitle: 'Rendi speciali i tuoi momenti',
+      description: 'Organizziamo compleanni, matrimoni e eventi aziendali con menu personalizzati.',
+      cta: 'Richiedi Informazioni',
     },
-    "featuresTitle": "Le Nostre Proposte",
-    "featuresSubtitle": "Soluzioni su misura per ogni tipo di evento",
-    "types": {
-      "birthday": {
-        "title": "Compleanni",
-        "description": "Festeggia il tuo giorno speciale con la vera pizza napoletana e un'atmosfera accogliente."
-      },
-      "wedding": {
-        "title": "Matrimoni",
-        "description": "Ricevimenti intimi e raffinati con menu personalizzati per il tuo giorno più bello."
-      },
-      "business": {
-        "title": "Cene Aziendali",
-        "description": "L'ambiente ideale per team building e cene di lavoro in un clima rilassato."
-      },
-      "special": {
-        "title": "Occasioni Speciali",
-        "description": "Anniversari, lauree o semplici ritrovi tra amici: ogni scusa è buona per festeggiare."
-      }
+    navCta: 'Eventi',
+    featuresTitle: 'I Nostri Servizi',
+    featuresSubtitle: 'Per il tuo evento speciale',
+    capacity: {
+      title: 'Capienza',
+      description: 'Spazi accoglienti per ogni occasione',
+      label: 'Capienza massima',
+      imagePlaceholder: 'Foto evento',
     },
-    "capacity": {
-      "title": "Spazio & Versatilità",
-      "description": "La nostra sala può essere configurata per ospitare gruppi di diverse dimensioni, garantendo sempre comfort e privacy.",
-      "label": "Persone",
-      "imagePlaceholder": "Foto della sala allestita"
+    types: {
+      birthday: {
+        title: 'Compleanni',
+        description: 'Festa il tuo giorno speciale con amici e famiglia.',
+        capacity: 'Fino a 50 persone',
+      },
+      wedding: {
+        title: 'Matrimoni',
+        description: 'Ricevimenti intimi e cene di prova.',
+        capacity: 'Fino a 80 persone',
+      },
+      business: {
+        title: 'Eventi Aziendali',
+        description: 'Pranzi di lavoro e cene di gala.',
+        capacity: 'Fino a 60 persone',
+      },
+      special: {
+        title: 'Occasioni Speciali',
+        description: 'Anniversari, lauree e molto altro.',
+        capacity: 'Su misura per te',
+      },
     },
-    "galleryTitle": "I Nostri Eventi",
-    "cta": {
-      "title": "Contattaci per il tuo evento",
-      "description": "Siamo a tua disposizione per creare un menu personalizzato e organizzare ogni dettaglio.",
-      "button": "Parla con noi"
-    }
+    cta: {
+      title: 'Parla con Noi',
+      description: 'Contattaci per discutere del tuo evento.',
+      button: 'Richiedi Informazioni',
+    },
+    galleryTitle: 'Galleria Eventi',
   },
   Common: {
-    learnMore: "Scopri di più",
-    bookNow: "Prenota Ora",
-    callUs: "Chiamaci",
-    scrollToTop: "Torna su",
+    loading: 'Caricamento...',
+    error: 'Si è verificato un errore',
+    retry: 'Riprova',
+    learnMore: 'Scopri di più',
   },
-}
+} satisfies Messages;

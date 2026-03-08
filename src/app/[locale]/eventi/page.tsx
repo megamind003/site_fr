@@ -1,21 +1,25 @@
 import { getTranslations } from 'next-intl/server'
 import { NavBar } from '@/components/layout/NavBar'
+import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
 import { Section, SectionHeader, SectionTitle, SectionSubtitle } from '@/components/ui/Section'
 import { Grid, Container } from '@/components/layout/Grid'
 import { FeatureCard, StatCard } from '@/components/features/Cards'
 import { Gallery } from '@/components/features/Gallery'
 
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/menu', label: 'Menu' },
-  { href: '/chi-siamo', label: 'Chi Siamo' },
-  { href: '/eventi', label: 'Eventi', active: true },
-  { href: '/contatti', label: 'Contatti' },
-]
-
-export default async function EventiPage({ params }: { params: { locale: string } }) {
+export default async function EventiPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = await getTranslations('Events')
+  const tNav = await getTranslations('Nav')
+  const tFooter = await getTranslations('Footer')
+
+  const navItems = [
+    { href: `/${locale}`, label: tNav('home') },
+    { href: `/${locale}/menu`, label: tNav('menu') },
+    { href: `/${locale}/chi-siamo`, label: tNav('about') },
+    { href: `/${locale}/eventi`, label: tNav('events'), active: true },
+    { href: `/${locale}/contatti`, label: tNav('contact') },
+  ]
 
   const eventTypes = [
     { 
@@ -42,13 +46,17 @@ export default async function EventiPage({ params }: { params: { locale: string 
 
   return (
     <>
-      <NavBar items={navItems} ctaPrimary={{ label: t('navCta'), href: '/contatti' }} />
+      <NavBar 
+        items={navItems} 
+        ctaPrimary={{ label: tNav('reserve'), href: `/${locale}/contatti` }} 
+        ctaSecondary={{ label: tNav('menu'), href: `/${locale}/menu` }}
+      />
       
       <Hero 
         title={t('hero.title')}
         subtitle={t('hero.subtitle')}
         description={t('hero.description')}
-        ctaPrimary={{ label: t('hero.cta'), href: '/contatti' }}
+        ctaPrimary={{ label: t('hero.cta'), href: `/${locale}/contatti` }}
         overlay="dark"
       />
 
@@ -105,13 +113,31 @@ export default async function EventiPage({ params }: { params: { locale: string 
             {t('cta.description')}
           </p>
           <a 
-            href="/contatti" 
+            href={`/${locale}/contatti`} 
             className="inline-flex items-center justify-center px-10 py-4 bg-white text-brand-terracotta font-bold rounded-lg hover:bg-brand-cream-100 transition-all shadow-xl hover:-translate-y-1"
           >
             {t('cta.button')}
           </a>
         </Container>
       </Section>
+
+      <Footer
+        tagline={tFooter('tagline')}
+        address={{
+          street: tFooter('addressValue'),
+          city: 'Cerveteri RM',
+        }}
+        contact={{
+          phone: tFooter('phoneValue'),
+          email: tFooter('emailValue'),
+        }}
+        hours={tFooter('hoursValue')}
+        social={[
+          { name: 'Facebook', href: '#', icon: 'facebook' },
+          { name: 'Instagram', href: '#', icon: 'instagram' },
+        ]}
+        copyright={tFooter('copyright')}
+      />
     </>
   )
 }

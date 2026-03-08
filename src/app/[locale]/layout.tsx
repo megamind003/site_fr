@@ -5,32 +5,44 @@ import { playfair, inter } from '../fonts';
 import type { Metadata } from 'next';
 import '@/app/globals.css';
 import { StickyMobileCTA } from '@/components/features/StickyMobileCTA';
+import { BottomNav } from '@/components/layout/BottomNav';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://damassy.it'),
+  title: 'Da Massy In Rosticceria | Pizzeria e Tavola Calda a Cerveteri',
+  description: 'Pizzeria e tavola calda a Cerveteri. Menu variabile ogni giorno, pizza sempre disponibile. Pranzo 12-14 con banco completo, cena focus sulla pizza.',
+  keywords: ['pizzeria', 'tavola calda', 'cerveteri', 'ristorante', 'pizza al taglio', 'pranzo', 'cena', 'da massy'],
+  authors: [{ name: 'Da Massy In Rosticceria' }],
+  openGraph: {
+    title: 'Da Massy In Rosticceria | Pizzeria e Tavola Calda',
+    description: 'Pizzeria e tavola calda a Cerveteri. Menu variabile ogni giorno, pizza sempre disponibile.',
+    url: 'https://damassy.it',
+    siteName: 'Da Massy In Rosticceria',
+    locale: 'it_IT',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Da Massy In Rosticceria - Pizzeria e Tavola Calda',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Da Massy In Rosticceria',
+    description: 'Pizzeria e tavola calda a Cerveteri',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-export const metadata: Metadata = {
-  title: 'Da Massy Ristorante | Cucina di Terra e Mare a Cerveteri',
-  description:
-    'Ristorante Da Massy a Cerveteri - Cucina mista di terra e mare. Ingredienti locali, tradizione e innovazione. Prenota il tuo tavolo.',
-  keywords: [
-    'ristorante cerveteri',
-    'cucina terra e mare',
-    'da massy',
-    'ristorante lazio',
-    'cucina romana',
-    'pesce fresco cerveteri',
-    'necropoli banditaccia',
-  ],
-  authors: [{ name: 'Da Massy Ristorante' }],
-  openGraph: {
-    title: 'Da Massy Ristorante | Cerveteri',
-    description: 'Cucina mista di terra e mare nel cuore di Cerveteri',
-    locale: 'it_IT',
-    type: 'website',
-  },
-};
 
 export default async function LocaleLayout({
   children,
@@ -54,6 +66,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
           <StickyMobileCTA />
+          <BottomNav />
         </NextIntlClientProvider>
       </body>
     </html>

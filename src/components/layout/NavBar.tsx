@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import { cn } from '@/lib/utils'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Globe } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/Button'
 
 export interface NavItem {
@@ -36,6 +38,8 @@ export interface NavBarProps {
 
 export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, className }: NavBarProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const locale = useLocale()
 
   const filteredItems = items.filter(item => 
     item.href !== ctaPrimary?.href && 
@@ -43,16 +47,22 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, cla
     item.href !== ctaTertiary?.href
   )
 
+  const otherLocale = locale === 'it' ? 'en' : 'it'
+  const otherLocaleLabel = locale === 'it' ? 'EN' : 'IT'
+  
+  const otherLocalePath = pathname.replace(`/${locale}`, `/${otherLocale}`) || `/${otherLocale}`
+  console.log('NavBar Debug:', { locale, otherLocale, pathname, otherLocalePath })
+
   return (
     <header className={cn('fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-brand-terracotta/98 to-brand-terracotta/95 backdrop-blur-md shadow-lg border-b border-white/10', className)}>
       <nav className="container mx-auto px-4 md:px-6" aria-label="Main navigation">
         <div className="flex items-center justify-between h-20">
           {logo ? (
-            <Link href={logo.href || '/'} className="flex-shrink-0" aria-label="Home">
+            <Link href={logo.href || `/${locale}`} className="flex-shrink-0" aria-label="Home">
               <img src={logo.src} alt={logo.alt} className="h-12 w-auto" />
             </Link>
           ) : (
-            <Link href="/" className="text-2xl font-display font-bold text-white drop-shadow-lg" aria-label="Home">
+            <Link href={`/${locale}`} className="text-2xl font-display font-bold text-white drop-shadow-lg" aria-label="Home">
               Da Massy
             </Link>
           )}
@@ -64,12 +74,20 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, cla
                 href={item.href}
                 className={cn(
                   'text-sm font-medium transition-colors text-white/90 hover:text-white',
-                  item.active ? 'text-white' : 'text-white/90'
+                  item.active || pathname === item.href ? 'text-white' : 'text-white/90'
                 )}
               >
                 {item.label}
               </Link>
             ))}
+            
+            <Link
+              href={otherLocalePath}
+              className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white transition-colors border-l border-white/20 pl-8"
+            >
+              <Globe className="w-4 h-4" />
+              {otherLocaleLabel}
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -119,13 +137,23 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, cla
                   href={item.href}
                     className={cn(
                     'text-base font-medium px-2 py-1 transition-colors text-white/90 hover:text-white',
-                    item.active ? 'text-white' : 'text-white/90'
+                    item.active || pathname === item.href ? 'text-white' : 'text-white/90'
                   )}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
+              
+              <Link
+                href={otherLocalePath}
+                className="flex items-center gap-2 text-base font-medium px-2 py-1 text-white/90 hover:text-white transition-colors border-t border-white/10 pt-4"
+                onClick={() => setIsOpen(false)}
+              >
+                <Globe className="w-5 h-5" />
+                Cambia lingua in {otherLocaleLabel}
+              </Link>
+
               <div className="flex flex-col space-y-3 pt-4 border-t border-white/10">
                 {ctaTertiary && (
                   <Link

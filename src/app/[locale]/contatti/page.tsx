@@ -1,27 +1,33 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useParams } from 'next/navigation'
 import { NavBar } from '@/components/layout/NavBar'
+import { Footer } from '@/components/layout/Footer'
 import { Section, SectionHeader, SectionTitle, SectionSubtitle } from '@/components/ui/Section'
 import { Container } from '@/components/layout/Grid'
 import { ReservationForm } from '@/components/features/ReservationForm'
 
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/menu', label: 'Menu' },
-  { href: '/chi-siamo', label: 'Chi Siamo' },
-  { href: '/contatti', label: 'Contatti', active: true },
-]
-
 export default function ContattiPage() {
   const t = useTranslations('Contact')
+  const tNav = useTranslations('Nav')
+  const tFooter = useTranslations('Footer')
+  const { locale } = useParams()
+
+  const navItems = [
+    { href: `/${locale}`, label: tNav('home') },
+    { href: `/${locale}/menu`, label: tNav('menu') },
+    { href: `/${locale}/chi-siamo`, label: tNav('about') },
+    { href: `/${locale}/eventi`, label: tNav('events') },
+    { href: `/${locale}/contatti`, label: tNav('contact'), active: true },
+  ]
 
   return (
     <>
       <NavBar 
         items={navItems} 
-        ctaPrimary={{ label: 'Prenota', href: '/contatti' }} 
-        ctaSecondary={{ label: 'Menu', href: '/menu' }}
+        ctaPrimary={{ label: tNav('reserve'), href: `/${locale}/contatti` }} 
+        ctaSecondary={{ label: tNav('menu'), href: `/${locale}/menu` }}
       />
       
       <Section variant="alternate" className="pt-24">
@@ -39,7 +45,7 @@ export default function ContattiPage() {
             <div className="space-y-4">
               <div className="overflow-hidden rounded-2xl shadow-2xl border-4 border-white/20 backdrop-blur-sm bg-white/10">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.4736!2d12.0948113!3d42.0089776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f3f0c0c0c0c0d%3A0x1234567890abcdef!2sCerveteri%20RM%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890123!5m2!1sen!2sit"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.4736!2d12.0948113!3d42.0089776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f3f0c0c0c0c0d%3A0x1234567890abcdef!2sVia%20Prato%20del%20Cavaliere%207%2C%2000052%20Cerveteri%20RM!5e0!3m2!1sen!2sit!4v1234567890123!5m2!1sen!2sit"
                   width="100%"
                   height="400"
                   style={{ border: 0 }}
@@ -53,7 +59,7 @@ export default function ContattiPage() {
               </div>
               <div className="text-center lg:text-left">
                 <a 
-                  href="https://www.google.com/maps/dir/?api=1&destination=42.009,12.097" 
+                  href="https://www.google.com/maps/dir/?api=1&destination=Via+Prato+del+Cavaliere+7+Cerveteri" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-brand-terracotta-500 hover:bg-brand-terracotta-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -77,10 +83,10 @@ export default function ContattiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Dove Siamo</h3>
+                    <h3 className="text-xl font-bold mb-2">{t('address.title')}</h3>
                     <p className="text-gray-700">
-                      Via Prato del Cavaliere, 7<br />
-                      00052 Cerveteri (RM)
+                      {t('address.street')}<br />
+                      {t('address.cap')} {t('address.city')}
                     </p>
                   </div>
                 </div>
@@ -93,19 +99,19 @@ export default function ContattiPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold">Contatti</h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <span className="text-gray-600">Telefono:</span>
-                        <a href="tel:+39069953303" className="font-semibold text-brand-terracotta-500 hover:text-brand-terracotta-600 transition-colors">+39 06 995 3303</a>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-gray-600">Email:</span>
-                        <a href="mailto:info@damassy.it" className="font-semibold text-brand-ocean-500 hover:text-brand-ocean-600 transition-colors">info@damassy.it</a>
-                      </li>
-                    </ul>
-                  </div>
+                   <div className="space-y-4">
+                     <h3 className="text-xl font-bold">{t('title')}</h3>
+                     <ul className="space-y-3">
+                       <li className="flex items-center gap-3">
+                         <span className="text-gray-600">{t('phone.label')}:</span>
+                         <a href={`tel:${t('phone.value')}`} className="font-semibold text-brand-terracotta-500 hover:text-brand-terracotta-600 transition-colors">{t('phone.value')}</a>
+                       </li>
+                       <li className="flex items-center gap-3">
+                         <span className="text-gray-600">{t('email.label')}:</span>
+                         <a href={`mailto:${t('email.value')}`} className="font-semibold text-brand-ocean-500 hover:text-brand-ocean-600 transition-colors">{t('email.value')}</a>
+                       </li>
+                     </ul>
+                   </div>
                 </div>
               </div>
 
@@ -117,10 +123,12 @@ export default function ContattiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Orari di Apertura</h3>
-                    <p className="text-gray-700">
-                      Mar - Dom: 12:00 - 15:00 / 19:00 - 23:00<br />
-                      Lunedì: Chiuso
+                    <h3 className="text-xl font-bold mb-2">{tFooter('hoursTitle')}</h3>
+                    <p className="text-gray-700 mb-3">
+                      {tFooter('hoursValue')}
+                    </p>
+                    <p className="text-sm text-brand-terracotta-600 font-medium italic">
+                      {tFooter('hoursDisclaimer')}
                     </p>
                   </div>
                 </div>
@@ -140,6 +148,24 @@ export default function ContattiPage() {
           </div>
         </Container>
       </Section>
+
+      <Footer
+        tagline={tFooter('tagline')}
+        address={{
+          street: tFooter('addressValue'),
+          city: 'Cerveteri RM',
+        }}
+        contact={{
+          phone: tFooter('phoneValue'),
+          email: tFooter('emailValue'),
+        }}
+        hours={tFooter('hoursValue')}
+        social={[
+          { name: 'Facebook', href: '#', icon: 'facebook' },
+          { name: 'Instagram', href: '#', icon: 'instagram' },
+        ]}
+        copyright={tFooter('copyright')}
+      />
     </>
   )
 }
