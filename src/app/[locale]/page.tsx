@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { MenuSection } from '@/components/sections/MenuSection';
 import { Container } from '@/components/layout/Grid';
+import { Section } from '@/components/ui/Section';
 import { FeatureCard } from '@/components/features/Cards';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DietaryType } from '@/components/ui/Badge';
@@ -71,8 +72,8 @@ export default async function HomePage({ params }: Props) {
         ctaSecondary={{ label: hero('ctaSecondary'), href: '/contatti' }}
       />
 
-      <Container>
-        <section id="features" className="py-20">
+      <section id="features" className="py-20 bg-gradient-to-br from-brand-ocean-50 via-white to-brand-terracotta-50">
+        <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureItems.map((feature, i) => (
               <FeatureCard
@@ -83,8 +84,8 @@ export default async function HomePage({ params }: Props) {
               />
             ))}
           </div>
-        </section>
-      </Container>
+        </Container>
+      </section>
 
       <MenuSection
         title={menu('sectionTitle')}
@@ -92,6 +93,25 @@ export default async function HomePage({ params }: Props) {
         categories={menu.raw('categories') as string[]}
         dishes={dishList}
       />
+
+      <Section variant="gradient-mesh">
+        <Container>
+          <div className="text-center py-12">
+            <h3 className="text-3xl font-bold font-display text-white mb-4">
+              Vieni a Trovarci
+            </h3>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Ti aspettiamo per un'esperienza culinaria indimenticabile
+            </p>
+            <a
+              href="/contatti"
+              className="inline-flex items-center gap-2 bg-white text-brand-terracotta-600 px-8 py-4 rounded-full font-semibold hover:bg-brand-cream-100 transition-all shadow-lg hover:shadow-xl"
+            >
+              Prenota un Tavolo
+            </a>
+          </div>
+        </Container>
+      </Section>
 
 
 

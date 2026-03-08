@@ -2,7 +2,7 @@ import { HTMLAttributes, forwardRef, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface SectionProps extends Omit<HTMLAttributes<HTMLElement>, 'align'> {
-  variant?: 'default' | 'alternate' | 'dark' | 'primary'
+  variant?: 'default' | 'alternate' | 'dark' | 'primary' | 'gradient-mesh'
   padding?: 'default' | 'large' | 'none'
   children?: ReactNode
 }
@@ -17,10 +17,11 @@ const Section = forwardRef<HTMLElement, SectionProps>(
           padding === 'default' && 'py-16 md:py-24',
           padding === 'large' && 'py-24 md:py-32',
           padding === 'none' && 'py-0',
-          variant === 'default' && 'bg-transparent',
-          variant === 'alternate' && 'bg-gradient-mesh',
+          variant === 'default' && 'bg-gradient-to-b from-cream-50 to-white',
+          variant === 'alternate' && 'bg-gradient-to-b from-white to-cream-100',
           variant === 'dark' && 'bg-brand-ocean-900 text-white',
-          variant === 'primary' && 'bg-brand-terracotta-50 text-white',
+          variant === 'primary' && 'bg-brand-terracotta-500 text-white',
+          variant === 'gradient-mesh' && 'bg-gradient-mesh relative',
           className
         )}
         {...props}
