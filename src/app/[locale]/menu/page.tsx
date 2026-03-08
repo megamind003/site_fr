@@ -25,7 +25,7 @@ export default function MenuPage() {
       price: '€18', 
       image: 'https://images.unsplash.com/photo-1606850780554-b55ea40f0fe9?q=80&w=800&auto=format&fit=crop', 
       category: 'Antipasti',
-      dietary: ['special'] as DietaryBadge[],
+      badges: ['special'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -36,7 +36,7 @@ export default function MenuPage() {
       price: '€24', 
       image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=800&auto=format&fit=crop', 
       category: 'Antipasti',
-      dietary: ['gluten-free'] as DietaryBadge[],
+      badges: ['gluten-free'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -47,7 +47,7 @@ export default function MenuPage() {
       price: '€10', 
       image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop', 
       category: 'Pizze',
-      dietary: ['vegetarian'] as DietaryBadge[],
+      badges: ['vegetarian'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -58,7 +58,7 @@ export default function MenuPage() {
       price: '€14', 
       image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=800&auto=format&fit=crop', 
       category: 'Primi',
-      dietary: ['special'] as DietaryBadge[],
+      badges: ['special'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -69,7 +69,7 @@ export default function MenuPage() {
       price: '€16', 
       image: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=800&auto=format&fit=crop', 
       category: 'Primi',
-      dietary: ['spicy'] as DietaryBadge[],
+      badges: ['spicy'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -80,7 +80,7 @@ export default function MenuPage() {
       price: '€6', 
       image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=800&auto=format&fit=crop', 
       category: 'Dolci',
-      dietary: ['vegetarian'] as DietaryBadge[],
+      badges: ['vegetarian'] as DietaryType[],
       ctaText: t('cta'),
       ctaHref: '/contatti'
     },
@@ -92,7 +92,6 @@ export default function MenuPage() {
         items={navItems} 
         ctaPrimary={{ label: 'Prenota', href: '/contatti' }} 
         ctaSecondary={{ label: 'Menu', href: '/menu' }}
-        ctaTertiary={{ label: 'Contatti', href: '/contatti' }}
       />
       
       <Section variant="alternate" className="pt-24">
