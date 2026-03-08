@@ -5,6 +5,7 @@ export interface FooterProps {
   address?: {
     street: string
     city: string
+    cap?: string
   }
   contact?: {
     phone: string
@@ -34,7 +35,10 @@ export function Footer({ tagline, address, contact, hours, social, copyright, cl
                 Indirizzo
               </h4>
               <p className="text-brand-ocean-200 text-sm">{address.street}</p>
-              <p className="text-brand-ocean-200 text-sm">{address.city}</p>
+              <p className="text-brand-ocean-200 text-sm">
+                {address.cap && <>{address.cap} </>}
+                {address.city}
+              </p>
             </div>
           )}
 

@@ -49,7 +49,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased pb-16 md:pb-0">
+      <body className="font-sans antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
           <StickyMobileCTA />

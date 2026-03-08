@@ -32,14 +32,18 @@ const FeatureIcon = ({ name }: { name: string }) => {
 
 export function FeatureCard({ icon, title, description, className }: FeatureCardProps) {
   return (
-    <div className={cn('p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow', className)}>
+    <div className={cn(
+      'group p-6 md:p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1',
+      'border border-gray-100 hover:border-brand-terracotta-200',
+      className
+    )}>
       {icon && (
-        <div className="w-12 h-12 mb-4 text-brand-terracotta-500">
+        <div className="w-14 h-14 md:w-16 md:h-16 mb-6 text-brand-terracotta-500 group-hover:scale-110 transition-transform duration-300">
           {typeof icon === 'string' ? <FeatureIcon name={icon} /> : icon}
         </div>
       )}
-      <h3 className="text-xl font-bold font-display mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-xl md:text-2xl font-bold font-display mb-3 group-hover:text-brand-terracotta-600 transition-colors">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
     </div>
   )
 }

@@ -28,7 +28,6 @@ export default async function ChiSiamoPage({ params }: { params: { locale: strin
         items={navItems} 
         ctaPrimary={{ label: 'Prenota', href: '/contatti' }} 
         ctaSecondary={{ label: 'Menu', href: '/menu' }}
-        ctaTertiary={{ label: 'Contatti', href: '/contatti' }}
       />
       
       <Section variant="alternate" className="pt-24">

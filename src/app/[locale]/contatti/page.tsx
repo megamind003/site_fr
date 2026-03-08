@@ -22,7 +22,6 @@ export default function ContattiPage() {
         items={navItems} 
         ctaPrimary={{ label: 'Prenota', href: '/contatti' }} 
         ctaSecondary={{ label: 'Menu', href: '/menu' }}
-        ctaTertiary={{ label: 'Contatti', href: '/contatti' }}
       />
       
       <Section variant="alternate" className="pt-24">
@@ -40,7 +39,7 @@ export default function ContattiPage() {
             <div className="space-y-4">
               <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.5!2d12.097!3d42.009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDAwJzMyLjQiTiAxMsKwMDUnNDkuMiJF"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.4736!2d12.0948113!3d42.0089776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f3f0c0c0c0c0d%3A0x1234567890abcdef!2sCerveteri%20RM%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890123!5m2!1sen!2sit"
                   width="100%"
                   height="400"
                   style={{ border: 0 }}
@@ -48,7 +47,8 @@ export default function ContattiPage() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-[250px] lg:h-[400px]"
-                  title="Google Maps"
+                  title="Google Maps - Ristorante Damassy, Cerveteri"
+                  aria-label="Mappa Google che mostra la posizione del ristorante a Cerveteri"
                 ></iframe>
               </div>
               <div className="text-center lg:text-left">
@@ -67,7 +67,8 @@ export default function ContattiPage() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">Dove Siamo</h3>
                 <p className="text-lg text-gray-600">
-                  Via [Street Name], Cerveteri (RM)
+                  Via Prato del Cavaliere, 7<br />
+                  00052 Cerveteri (RM)
                 </p>
               </div>
               <div>
@@ -75,7 +76,7 @@ export default function ContattiPage() {
                 <ul className="space-y-4 text-lg text-gray-600">
                   <li className="flex items-center gap-3">
                     <span className="font-semibold">Telefono:</span>
-                    <a href="tel:+393331234567" className="hover:text-primary">+39 333 1234567</a>
+                    <a href="tel:+39069953303" className="hover:text-primary">+39 06 995 3303</a>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="font-semibold">Email:</span>

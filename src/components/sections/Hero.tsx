@@ -31,8 +31,8 @@ export function Hero({
   const hasBackground = backgroundImage || overlay !== 'none'
   
   return (
-    <section className={cn('relative min-h-[90vh] flex items-center', className)}>
-      {/* Background layer */}
+    <section className={cn('relative min-h-[90vh] flex items-center overflow-hidden', className)}>
+      {/* Background layer with visual depth - gradient mesh */}
       {backgroundImage ? (
         <>
           <div
@@ -42,39 +42,49 @@ export function Hero({
           <div
             className={cn(
               'absolute inset-0',
-              overlay === 'dark' && 'bg-gradient-to-b from-black/70 via-black/50 to-black/70',
-              overlay === 'light' && 'bg-gradient-to-b from-white/70 via-white/50 to-white/70',
+              overlay === 'dark' && 'bg-gradient-to-b from-black/80 via-black/60 to-black/80',
+              overlay === 'light' && 'bg-gradient-to-b from-white/80 via-white/60 to-white/80',
               overlay === 'none' && 'bg-transparent'
             )}
           />
         </>
       ) : overlay !== 'none' ? (
-        /* Fallback gradient background when no image provided */
-        <div
-          className={cn(
+        /* Enhanced gradient mesh background with depth */
+        <div className="absolute inset-0">
+          {/* Base gradient */}
+          <div className={cn(
             'absolute inset-0',
-            overlay === 'dark' && 'bg-gradient-to-br from-brand-ocean-900 via-brand-ocean-700 to-brand-terracotta-700',
+            overlay === 'dark' && 'bg-gradient-to-br from-brand-ocean-950 via-brand-ocean-800 to-brand-terracotta-800',
             overlay === 'light' && 'bg-gradient-to-b from-brand-cream-200 via-brand-cream-100 to-white'
-          )}
-        />
+          )} />
+          {/* Mesh overlay for depth */}
+          <div className={cn(
+            'absolute inset-0 opacity-30',
+            overlay === 'dark' && 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-terracotta-500/40 via-transparent to-transparent',
+          )} />
+          <div className={cn(
+            'absolute inset-0 opacity-20',
+            overlay === 'dark' && 'bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-brand-ocean-500/30 via-transparent to-transparent',
+          )} />
+        </div>
       ) : null}
 
       <div className={cn(
-        'relative z-10 container mx-auto px-4 md:px-6 py-20',
-        !hasBackground && 'bg-gradient-to-br from-brand-ocean-900 via-brand-ocean-700 to-brand-terracotta-700 min-h-[90vh] flex items-center'
+        'relative z-10 container mx-auto px-4 md:px-6 lg:px-8 py-20',
+        !hasBackground && 'bg-gradient-to-br from-brand-ocean-950 via-brand-ocean-800 to-brand-terracotta-800 min-h-[90vh] flex items-center'
       )}>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {subtitle && (
             <p className={cn(
-              "font-semibold tracking-wider uppercase text-sm mb-4 animate-fade-in",
-              hasBackground ? 'text-brand-terracotta-400' : 'text-brand-terracotta-300'
+              "font-semibold tracking-wider uppercase text-xs md:text-sm mb-4 animate-fade-in",
+              hasBackground ? 'text-brand-terracotta-300' : 'text-brand-terracotta-300'
             )}>
               {subtitle}
             </p>
           )}
 
           <h1 className={cn(
-            "text-5xl md:text-6xl lg:text-7xl font-bold font-display mb-6 animate-slide-up",
+            "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-display mb-6 animate-slide-up leading-tight",
             hasBackground ? 'text-white' : 'text-white'
           )}>
             {title}
@@ -82,8 +92,8 @@ export function Hero({
 
           {description && (
             <p className={cn(
-              "text-xl md:text-2xl mb-10 max-w-2xl mx-auto animate-slide-up animation-delay-200",
-              hasBackground ? 'text-gray-200' : 'text-brand-cream-200'
+              "text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate-slide-up animation-delay-200 leading-relaxed",
+              hasBackground ? 'text-gray-100' : 'text-brand-cream-100'
             )}>
               {description}
             </p>
@@ -94,7 +104,7 @@ export function Hero({
               {ctaPrimary && (
                 <a
                   href={ctaPrimary.href}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-brand-terracotta-500 text-white font-semibold rounded-lg hover:bg-brand-terracotta-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-brand-terracotta-500 text-white font-semibold rounded-lg hover:bg-brand-terracotta-600 transition-all shadow-lg shadow-brand-terracotta-500/30 hover:shadow-xl hover:shadow-brand-terracotta-500/40 hover:-translate-y-0.5"
                 >
                   {ctaPrimary.label}
                 </a>
@@ -103,10 +113,10 @@ export function Hero({
                 <a
                   href={ctaSecondary.href}
                   className={cn(
-                    "inline-flex items-center justify-center px-8 py-4 font-semibold rounded-lg transition-all border-2",
+                    "inline-flex items-center justify-center px-8 py-4 font-semibold rounded-lg transition-all border-2 backdrop-blur-sm",
                     hasBackground 
-                      ? 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border-white/30'
-                      : 'bg-brand-cream-100 text-brand-ocean-900 hover:bg-brand-cream-200 border-brand-cream-300'
+                      ? 'bg-white/15 text-white hover:bg-white/25 border-white/50 shadow-lg hover:-translate-y-0.5'
+                      : 'bg-brand-cream-100/90 text-brand-ocean-900 hover:bg-brand-cream-200/90 border-brand-cream-300'
                   )}
                 >
                   {ctaSecondary.label}
