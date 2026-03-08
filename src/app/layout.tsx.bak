@@ -1,0 +1,37 @@
+import type { Metadata } from 'next'
+import { playfair, inter } from './fonts'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'Da Massy Ristorante | Cucina di Terra e Mare a Cerveteri',
+  description:
+    'Ristorante Da Massy a Cerveteri - Cucina mista di terra e mare. Ingredienti locali, tradizione e innovazione. Prenota il tuo tavolo.',
+  keywords: [
+    'ristorante cerveteri',
+    'cucina terra e mare',
+    'da massy',
+    'ristorante lazio',
+    'cucina romana',
+    'pesce fresco cerveteri',
+    'necropoli banditaccia',
+  ],
+  authors: [{ name: 'Da Massy Ristorante' }],
+  openGraph: {
+    title: 'Da Massy Ristorante | Cerveteri',
+    description: 'Cucina mista di terra e mare nel cuore di Cerveteri',
+    locale: 'it_IT',
+    type: 'website',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="it" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
+    </html>
+  )
+}

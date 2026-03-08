@@ -1,0 +1,154 @@
+/**
+ * Copyright (c) 2025 Da Massy Ristorante
+ */
+@import "tailwindcss";
+
+/* Design System - Custom Properties */
+@theme {
+  /* Colors - Brand Palette */
+  --color-brand-terraccotta-50: #FDF3F1;
+  --color-brand-terraccotta-100: #FAE5DE;
+  --color-brand-terraccotta-200: #F5C5B8;
+  --color-brand-terraccotta-300: #EF9F8A;
+  --color-brand-terraccotta-400: #E9755C;
+  --color-brand-terraccotta-500: #C15B3E;
+  --color-brand-terraccotta-600: #A3462D;
+  --color-brand-terraccotta-700: #853623;
+  --color-brand-terraccotta-800: #6A2D1F;
+  --color-brand-terraccotta-900: #58271D;
+  --color-brand-terraccotta-950: #2F120E;
+  
+  --color-brand-ocean-50: #F0F7F8;
+  --color-brand-ocean-100: #DDEEF0;
+  --color-brand-ocean-200: #BFDCE1;
+  --color-brand-ocean-300: #96C3CB;
+  --color-brand-ocean-400: #66A3AF;
+  --color-brand-ocean-500: #2C5F6F;
+  --color-brand-ocean-600: #254F5C;
+  --color-brand-ocean-700: #21424C;
+  --color-brand-ocean-800: #1F363E;
+  --color-brand-ocean-900: #1D2F35;
+  --color-brand-ocean-950: #0F1A1F;
+  
+  --color-brand-cream-50: #FDFCFB;
+  --color-brand-cream-100: #FAF8F5;
+  --color-brand-cream-200: #F5F1E8;
+  --color-brand-cream-300: #EDE6D6;
+  --color-brand-cream-400: #E2D6BF;
+  --color-brand-cream-500: #D4C1A3;
+  --color-brand-cream-600: #BCA37F;
+  --color-brand-cream-700: #9D8469;
+  --color-brand-cream-800: #826D5A;
+  --color-brand-cream-900: #6D5B4E;
+  --color-brand-cream-950: #3D3129;
+  
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  
+  /* Animation Timing */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.6s ease-out;
+  --animate-slide-down: slide-down 0.4s ease-out;
+  --animate-scale-in: scale-in 0.3s ease-out;
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  body {
+    background-color: var(--color-cream-50);
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Component Classes */
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-brand-terraccotta-500 hover:bg-brand-terraccotta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-brand-ocean-500 hover:bg-brand-ocean-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-brand-terraccotta-500 text-brand-terraccotta-500 hover:bg-brand-terraccotta-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl;
+  }
+  
+  /* Sections */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Typography */
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}

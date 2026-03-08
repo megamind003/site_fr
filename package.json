@@ -1,0 +1,39 @@
+{
+  "name": "da-massy-website",
+  "version": "1.0.0",
+  "description": "Sito web per Da Massy Ristorante - Cerveteri",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "restaurant",
+    "cerveteri",
+    "nextjs",
+    "react"
+  ],
+  "author": "Da Massy Ristorante",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^25.3.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.27",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "next": "^14.2.35",
+    "next-intl": "^4.8.3",
+    "postcss": "^8.5.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1"
+  }
+}
