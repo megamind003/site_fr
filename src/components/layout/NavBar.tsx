@@ -76,7 +76,7 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, cla
             {ctaTertiary && (
               <Link
                 href={ctaTertiary.href}
-                className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
+                className={cn(buttonVariants({ variant: 'primary', size: 'sm' }))}
               >
                 {ctaTertiary.label}
               </Link>
@@ -130,7 +130,7 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, cla
                 {ctaTertiary && (
                   <Link
                     href={ctaTertiary.href}
-                    className={cn(buttonVariants({ variant: 'outline', size: 'md' }), 'w-full')}
+                    className={cn(buttonVariants({ variant: 'primary', size: 'md' }), 'w-full')}
                     onClick={() => setIsOpen(false)}
                   >
                     {ctaTertiary.label}

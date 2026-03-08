@@ -4,8 +4,9 @@ import { cn } from '@/lib/utils'
 import { ReactNode, useState } from 'react'
 import { Utensils, Leaf, Heart, Wine, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-export { DietaryBadge } from '@/components/ui/Badge'
-export type { DietaryType } from '@/components/ui/Badge'
+import { DietaryBadge, DietaryType } from '@/components/ui/Badge'
+export { DietaryBadge }
+export type { DietaryType }
 
 export interface FeatureCardProps {
   icon?: ReactNode | string
@@ -144,7 +145,7 @@ export interface StatCardProps {
 
 export function StatCard({ value, label, className }: StatCardProps) {
   return (
-    <div className={cn('p-6 rounded-2xl bg-brand-terracotta text-white text-center shadow-lg', className)}>
+    <div className={cn('p-6 rounded-2xl bg-brand-terracotta-500 text-white text-center shadow-lg', className)}>
       <div className="text-4xl md:text-5xl font-bold font-display mb-2">{value}</div>
       <div className="text-sm md:text-base opacity-90">{label}</div>
     </div>
