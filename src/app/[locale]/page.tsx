@@ -61,7 +61,6 @@ export default async function HomePage({ params }: Props) {
         items={navItems} 
         ctaPrimary={{ label: nav('reserve'), href: '/prenota' }} 
         ctaSecondary={{ label: nav('menu'), href: '/menu' }}
-        ctaTertiary={{ label: nav('contact'), href: '/contatti' }}
       />
       
       <Hero
