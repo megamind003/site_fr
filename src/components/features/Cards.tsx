@@ -2,8 +2,10 @@
 
 import { cn } from '@/lib/utils'
 import { ReactNode, useState } from 'react'
-import { Leaf, Vegan, WheatOff, Flame, Star, ArrowRight, Utensils, Heart, Wine } from 'lucide-react'
+import { Utensils, Leaf, Heart, Wine, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+export { DietaryBadge } from '@/components/ui/Badge'
+export type { DietaryType } from '@/components/ui/Badge'
 
 export interface FeatureCardProps {
   icon?: ReactNode | string
@@ -31,7 +33,7 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
   return (
     <div className={cn('p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow', className)}>
       {icon && (
-        <div className="w-12 h-12 mb-4 text-brand-terracotta">
+        <div className="w-12 h-12 mb-4 text-brand-terracotta-500">
           {typeof icon === 'string' ? <FeatureIcon name={icon} /> : icon}
         </div>
       )}
@@ -41,38 +43,19 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
   )
 }
 
-export type DietaryBadge = 'vegetarian' | 'vegan' | 'gluten-free' | 'spicy' | 'special'
-
 export interface DishCardProps {
   image: string
   name: string
   description: string
   price?: string
   category?: string
-  dietary?: DietaryBadge[]
+  badges?: readonly DietaryType[]
   ctaText?: string
   ctaHref?: string
   className?: string
 }
 
-const DietaryIcon = ({ type }: { type: DietaryBadge }) => {
-  switch (type) {
-    case 'vegetarian':
-      return <Leaf className="w-4 h-4 text-green-600" aria-label="Vegetarian" />
-    case 'vegan':
-      return <Vegan className="w-4 h-4 text-green-500" aria-label="Vegan" />
-    case 'gluten-free':
-      return <WheatOff className="w-4 h-4 text-amber-600" aria-label="Gluten-free" />
-    case 'spicy':
-      return <Flame className="w-4 h-4 text-red-500" aria-label="Spicy" />
-    case 'special':
-      return <Star className="w-4 h-4 text-yellow-500" aria-label="Chef's Special" />
-    default:
-      return null
-  }
-}
-
-export function DishCard({ image, name, description, price, category, dietary = [], ctaText, ctaHref, className }: DishCardProps) {
+export function DishCard({ image, name, description, price, category, badges = [], ctaText, ctaHref, className }: DishCardProps) {
   const [imgError, setImgError] = useState(false)
 
   return (
@@ -91,7 +74,7 @@ export function DishCard({ image, name, description, price, category, dietary = 
           </div>
         )}
         {category && (
-          <span className="absolute top-3 right-3 px-3 py-1 bg-brand-terracotta text-white text-xs font-medium rounded-full shadow-sm">
+          <span className="absolute top-3 right-3 px-3 py-1 bg-brand-terracotta-500 text-white text-xs font-medium rounded-full shadow-sm">
             {category}
           </span>
         )}
@@ -99,15 +82,13 @@ export function DishCard({ image, name, description, price, category, dietary = 
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2 gap-2">
           <h3 className="text-lg font-bold font-display leading-tight">{name}</h3>
-          {price && <span className="text-brand-terracotta font-bold whitespace-nowrap">{price}</span>}
+          {price && <span className="text-brand-terracotta-500 font-bold whitespace-nowrap">{price}</span>}
         </div>
         
-        {dietary.length > 0 && (
-          <div className="flex gap-1.5 mb-3">
-            {dietary.map((badge) => (
-              <div key={badge} className="p-1 bg-gray-50 rounded-md shadow-sm border border-gray-100" title={badge}>
-                <DietaryIcon type={badge} />
-              </div>
+        {badges.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {badges.map((badge) => (
+              <DietaryBadge key={badge} type={badge} />
             ))}
           </div>
         )}
@@ -117,7 +98,7 @@ export function DishCard({ image, name, description, price, category, dietary = 
         {ctaText && ctaHref && (
           <Link 
             href={ctaHref}
-            className="inline-flex items-center text-sm font-semibold text-brand-terracotta hover:text-brand-terracotta/80 transition-colors mt-auto pt-2 border-t border-gray-100"
+            className="inline-flex items-center text-sm font-semibold text-brand-terracotta-500 hover:text-brand-terracotta-600 transition-colors mt-auto pt-2 border-t border-gray-100"
           >
             {ctaText}
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />

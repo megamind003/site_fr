@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
+import { buttonVariants } from '@/components/ui/Button'
 
 export interface NavItem {
   href: string
@@ -26,14 +27,20 @@ export interface NavBarProps {
     label: string
     href: string
   }
+  ctaTertiary?: {
+    label: string
+    href: string
+  }
   className?: string
 }
 
-export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: NavBarProps) {
+export function NavBar({ items, logo, ctaPrimary, ctaSecondary, ctaTertiary, className }: NavBarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const filteredItems = items.filter(item => 
-    item.href !== ctaPrimary?.href && item.href !== ctaSecondary?.href
+    item.href !== ctaPrimary?.href && 
+    item.href !== ctaSecondary?.href &&
+    item.href !== ctaTertiary?.href
   )
 
   return (
@@ -66,10 +73,18 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: Nav
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
+            {ctaTertiary && (
+              <Link
+                href={ctaTertiary.href}
+                className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
+              >
+                {ctaTertiary.label}
+              </Link>
+            )}
             {ctaSecondary && (
               <Link
                 href={ctaSecondary.href}
-                className="inline-flex items-center px-4 py-2 border-2 border-brand-terracotta text-brand-terracotta text-sm font-medium rounded-lg hover:bg-brand-terracotta hover:text-white transition-colors"
+                className={cn(buttonVariants({ variant: 'secondary', size: 'sm' }))}
               >
                 {ctaSecondary.label}
               </Link>
@@ -77,7 +92,7 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: Nav
             {ctaPrimary && (
               <Link
                 href={ctaPrimary.href}
-                className="inline-flex items-center px-5 py-2.5 bg-brand-terracotta text-white text-sm font-medium rounded-lg hover:bg-brand-terracotta-600 transition-colors shadow-md"
+                className={cn(buttonVariants({ variant: 'primary', size: 'sm' }))}
               >
                 {ctaPrimary.label}
               </Link>
@@ -112,10 +127,19 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: Nav
                 </Link>
               ))}
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
+                {ctaTertiary && (
+                  <Link
+                    href={ctaTertiary.href}
+                    className={cn(buttonVariants({ variant: 'outline', size: 'md' }), 'w-full')}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {ctaTertiary.label}
+                  </Link>
+                )}
                 {ctaSecondary && (
                   <Link
                     href={ctaSecondary.href}
-                    className="flex items-center justify-center px-4 py-2.5 border-2 border-brand-terracotta text-brand-terracotta text-sm font-medium rounded-lg"
+                    className={cn(buttonVariants({ variant: 'secondary', size: 'md' }), 'w-full')}
                     onClick={() => setIsOpen(false)}
                   >
                     {ctaSecondary.label}
@@ -124,7 +148,7 @@ export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: Nav
                 {ctaPrimary && (
                   <Link
                     href={ctaPrimary.href}
-                    className="flex items-center justify-center px-4 py-3 bg-brand-terracotta text-white text-sm font-medium rounded-lg shadow-md"
+                    className={cn(buttonVariants({ variant: 'primary', size: 'md' }), 'w-full')}
                     onClick={() => setIsOpen(false)}
                   >
                     {ctaPrimary.label}

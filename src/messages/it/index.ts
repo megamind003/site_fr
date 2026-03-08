@@ -152,6 +152,47 @@ export const it = {
     title: "Contatti",
     subtitle: "Siamo qui per te",
   },
+  Events: {
+    navCta: "Prenota",
+    hero: {
+      "title": "Eventi Privati & Celebrazioni",
+      "subtitle": "Momenti Indimenticabili",
+      "description": "Dalle cene aziendali ai compleanni, rendiamo ogni tua occasione speciale un'esperienza gastronomica unica.",
+      "cta": "Richiedi Preventivo"
+    },
+    "featuresTitle": "Le Nostre Proposte",
+    "featuresSubtitle": "Soluzioni su misura per ogni tipo di evento",
+    "types": {
+      "birthday": {
+        "title": "Compleanni",
+        "description": "Festeggia il tuo giorno speciale con la vera pizza napoletana e un'atmosfera accogliente."
+      },
+      "wedding": {
+        "title": "Matrimoni",
+        "description": "Ricevimenti intimi e raffinati con menu personalizzati per il tuo giorno più bello."
+      },
+      "business": {
+        "title": "Cene Aziendali",
+        "description": "L'ambiente ideale per team building e cene di lavoro in un clima rilassato."
+      },
+      "special": {
+        "title": "Occasioni Speciali",
+        "description": "Anniversari, lauree o semplici ritrovi tra amici: ogni scusa è buona per festeggiare."
+      }
+    },
+    "capacity": {
+      "title": "Spazio & Versatilità",
+      "description": "La nostra sala può essere configurata per ospitare gruppi di diverse dimensioni, garantendo sempre comfort e privacy.",
+      "label": "Persone",
+      "imagePlaceholder": "Foto della sala allestita"
+    },
+    "galleryTitle": "I Nostri Eventi",
+    "cta": {
+      "title": "Contattaci per il tuo evento",
+      "description": "Siamo a tua disposizione per creare un menu personalizzato e organizzare ogni dettaglio.",
+      "button": "Parla con noi"
+    }
+  },
   Common: {
     learnMore: "Scopri di più",
     bookNow: "Prenota Ora",

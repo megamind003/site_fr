@@ -55,6 +55,35 @@ export const en = {
     sectionSubtitle: "Tradition and innovation in every course",
     categories: ["Land", "Sea", "First Courses", "Second Courses", "Desserts"],
     viewFull: "View Full Menu",
+    title: "Our Menu",
+    subtitle: "Discover our dishes",
+    cta: "Order Now",
+    dishes: {
+      terra: {
+        name: "Etruscan Platter",
+        description: "Selection of local cured meats and cheeses with honey and jams",
+      },
+      mare: {
+        name: "Raw Seafood",
+        description: "Selection of the catch of the day, oysters, red prawns and scampi",
+      },
+      pizza: {
+        name: "Authentic Margherita Pizza",
+        description: "San Marzano tomatoes, DOP buffalo mozzarella from Campania, fresh basil",
+      },
+      carbonara: {
+        name: "Spaghettoni alla Carbonara",
+        description: "Crispy guanciale, DOP pecorino romano, organic eggs, black pepper",
+      },
+      spaghetti: {
+        name: "Spaghetti with Clams",
+        description: "Fresh clams, garlic, parsley, chili pepper, deglazed with white wine",
+      },
+      tiramisu: {
+        name: "House Tiramisu",
+        description: "Artisanal ladyfingers, mascarpone cream, espresso coffee, bitter cocoa",
+      },
+    },
   },
   About: {
     sectionTitle: "Our Story",
@@ -120,6 +149,49 @@ export const en = {
     dinner: "Dinner",
     closed: "Closed",
     contactTitle: "Contact Us",
+    title: "Contact",
+    subtitle: "We are here for you",
+  },
+  Events: {
+    navCta: "Book Now",
+    hero: {
+      "title": "Private Events & Celebrations",
+      "subtitle": "Unforgettable Moments",
+      "description": "From business dinners to birthdays, we make every special occasion a unique gastronomic experience.",
+      "cta": "Request a Quote"
+    },
+    "featuresTitle": "Our Proposals",
+    "featuresSubtitle": "Tailored solutions for every type of event",
+    "types": {
+      "birthday": {
+        "title": "Birthdays",
+        "description": "Celebrate your special day with authentic Neapolitan pizza and a welcoming atmosphere."
+      },
+      "wedding": {
+        "title": "Weddings",
+        "description": "Intimate and refined receptions with personalized menus for your most beautiful day."
+      },
+      "business": {
+        "title": "Business Dinners",
+        "description": "The ideal environment for team building and business dinners in a relaxed atmosphere."
+      },
+      "special": {
+        "title": "Special Occasions",
+        "description": "Anniversaries, graduations or simple gatherings with friends: any excuse is good to celebrate."
+      }
+    },
+    "capacity": {
+      "title": "Space & Versatility",
+      "description": "Our room can be configured to accommodate groups of different sizes, always ensuring comfort and privacy.",
+      "label": "People",
+      "imagePlaceholder": "Photo of the set-up room"
+    },
+    "galleryTitle": "Our Events",
+    "cta": {
+      "title": "Contact us for your event",
+      "description": "We are at your disposal to create a personalized menu and organize every detail.",
+      "button": "Talk to us"
+    }
   },
   Common: {
     learnMore: "Learn More",

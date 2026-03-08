@@ -5,6 +5,7 @@ import { MenuSection } from '@/components/sections/MenuSection';
 import { Container } from '@/components/layout/Grid';
 import { FeatureCard } from '@/components/features/Cards';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { DietaryType } from '@/components/ui/Badge';
 
 export function generateStaticParams() {
   return [{ locale: 'it' }, { locale: 'en' }];
@@ -51,12 +52,17 @@ export default async function HomePage({ params }: Props) {
     price: '€12',
     category: key === 'carbonara' || key === 'spaghetti' ? 'primi' : key === 'tiramisu' ? 'dolci' : key,
     image: `/images/${key}.jpg`,
-    badges: (key === 'carbonara' ? ['special'] : key === 'spaghetti' ? ['gluten-free'] : key === 'tiramisu' ? ['vegetarian'] : []) as any[],
+    badges: (key === 'carbonara' ? ['special'] : key === 'spaghetti' ? ['gluten-free'] : key === 'tiramisu' ? ['vegetarian'] : []) as DietaryType[],
   }));
 
   return (
     <>
-      <NavBar items={navItems} ctaPrimary={{ label: nav('contact'), href: '/contatti' }} />
+      <NavBar 
+        items={navItems} 
+        ctaPrimary={{ label: nav('reserve'), href: '/prenota' }} 
+        ctaSecondary={{ label: nav('menu'), href: '/menu' }}
+        ctaTertiary={{ label: nav('contact'), href: '/contatti' }}
+      />
       
       <Hero
         title={hero('title')}
@@ -68,7 +74,7 @@ export default async function HomePage({ params }: Props) {
 
       <Container>
         <section id="features" className="py-20">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureItems.map((feature, i) => (
               <FeatureCard
                 key={i}
