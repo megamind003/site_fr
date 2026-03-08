@@ -17,14 +17,38 @@ export default function MenuPage() {
   const t = useTranslations('Menu')
 
   const dishes = [
-    { id: 1, name: t('dishes.terra.name'), description: t('dishes.terra.description'), price: '€14', image: '/images/terra.jpg', category: 'terra' },
-    { id: 2, name: t('dishes.mare.name'), description: t('dishes.mare.description'), price: '€16', image: '/images/mare.jpg', category: 'mare' },
-    { id: 3, name: t('dishes.pizza.name'), description: t('dishes.pizza.description'), price: '€12', image: '/images/pizza.jpg', category: 'pizza' },
+    { 
+      id: 1, 
+      name: t('dishes.terra.name'), 
+      description: t('dishes.terra.description'), 
+      price: '€14', 
+      image: '/images/terra.jpg', 
+      category: 'terra',
+      badges: ['special'] as const
+    },
+    { 
+      id: 2, 
+      name: t('dishes.mare.name'), 
+      description: t('dishes.mare.description'), 
+      price: '€16', 
+      image: '/images/mare.jpg', 
+      category: 'mare',
+      badges: ['gluten-free'] as const
+    },
+    { 
+      id: 3, 
+      name: t('dishes.pizza.name'), 
+      description: t('dishes.pizza.description'), 
+      price: '€12', 
+      image: '/images/pizza.jpg', 
+      category: 'pizza',
+      badges: ['vegetarian', 'spicy'] as const
+    },
   ]
 
   return (
     <>
-      <NavBar items={navItems} cta={{ label: 'Prenota', href: '/contatti' }} />
+      <NavBar items={navItems} ctaPrimary={{ label: 'Prenota', href: '/contatti' }} />
       
       <Section variant="alternate" className="pt-24">
         <Container>

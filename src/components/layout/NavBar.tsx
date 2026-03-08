@@ -1,5 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { Menu, X } from 'lucide-react'
 
 export interface NavItem {
   href: string
@@ -14,30 +18,40 @@ export interface NavBarProps {
     alt: string
     href?: string
   }
-  cta?: {
+  ctaPrimary?: {
+    label: string
+    href: string
+  }
+  ctaSecondary?: {
     label: string
     href: string
   }
   className?: string
 }
 
-export function NavBar({ items, logo, cta, className }: NavBarProps) {
+export function NavBar({ items, logo, ctaPrimary, ctaSecondary, className }: NavBarProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const filteredItems = items.filter(item => 
+    item.href !== ctaPrimary?.href && item.href !== ctaSecondary?.href
+  )
+
   return (
     <header className={cn('fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm', className)}>
-      <nav className="container mx-auto px-4 md:px-6">
+      <nav className="container mx-auto px-4 md:px-6" aria-label="Main navigation">
         <div className="flex items-center justify-between h-20">
           {logo ? (
-            <Link href={logo.href || '/'} className="flex-shrink-0">
+            <Link href={logo.href || '/'} className="flex-shrink-0" aria-label="Home">
               <img src={logo.src} alt={logo.alt} className="h-12 w-auto" />
             </Link>
           ) : (
-            <Link href="/" className="text-2xl font-display font-bold text-brand-terracotta">
+            <Link href="/" className="text-2xl font-display font-bold text-brand-terracotta" aria-label="Home">
               Da Massy
             </Link>
           )}
 
-          <div className="hidden md:flex items-center space-x-8">
-            {items.map((item) => (
+          <div className="hidden lg:flex items-center space-x-8">
+            {filteredItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -51,21 +65,75 @@ export function NavBar({ items, logo, cta, className }: NavBarProps) {
             ))}
           </div>
 
-          {cta && (
-            <Link
-              href={cta.href}
-              className="inline-flex items-center px-5 py-2.5 bg-brand-terracotta text-white text-sm font-medium rounded-lg hover:bg-brand-terracotta-600 transition-colors shadow-md"
-            >
-              {cta.label}
-            </Link>
-          )}
+          <div className="hidden md:flex items-center space-x-4">
+            {ctaSecondary && (
+              <Link
+                href={ctaSecondary.href}
+                className="inline-flex items-center px-4 py-2 border-2 border-brand-terracotta text-brand-terracotta text-sm font-medium rounded-lg hover:bg-brand-terracotta hover:text-white transition-colors"
+              >
+                {ctaSecondary.label}
+              </Link>
+            )}
+            {ctaPrimary && (
+              <Link
+                href={ctaPrimary.href}
+                className="inline-flex items-center px-5 py-2.5 bg-brand-terracotta text-white text-sm font-medium rounded-lg hover:bg-brand-terracotta-600 transition-colors shadow-md"
+              >
+                {ctaPrimary.label}
+              </Link>
+            )}
+          </div>
 
-          <button className="md:hidden p-2 text-gray-600" aria-label="Menu">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <button 
+            className="lg:hidden p-2 text-gray-600 hover:text-brand-terracotta transition-colors" 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
+
+        {isOpen && (
+          <div id="mobile-menu" className="lg:hidden py-4 border-t border-gray-100 animate-in slide-in-from-top duration-200">
+            <div className="flex flex-col space-y-4">
+              {filteredItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'text-base font-medium px-2 py-1 transition-colors hover:text-brand-terracotta',
+                    item.active ? 'text-brand-terracotta' : 'text-gray-700'
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
+                {ctaSecondary && (
+                  <Link
+                    href={ctaSecondary.href}
+                    className="flex items-center justify-center px-4 py-2.5 border-2 border-brand-terracotta text-brand-terracotta text-sm font-medium rounded-lg"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {ctaSecondary.label}
+                  </Link>
+                )}
+                {ctaPrimary && (
+                  <Link
+                    href={ctaPrimary.href}
+                    className="flex items-center justify-center px-4 py-3 bg-brand-terracotta text-white text-sm font-medium rounded-lg shadow-md"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {ctaPrimary.label}
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   )

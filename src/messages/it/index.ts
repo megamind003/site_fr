@@ -57,30 +57,31 @@ export const it = {
     viewFull: "Vedi Menu Completo",
     title: "Il Nostro Menu",
     subtitle: "Scopri i nostri piatti",
+    cta: "Ordina Ora",
     dishes: {
       terra: {
-        name: "Piatti di Terra",
-        description: "La migliore tradizione laziale",
+        name: "Tagliere Etrusco",
+        description: "Selezione di salumi e formaggi locali con miele e confetture",
       },
       mare: {
-        name: "Piatti di Mare",
-        description: "Fresco pescato quotidiano",
+        name: "Crudo di Mare",
+        description: "Selezione del pescato del giorno, ostriche, gamberi rossi e scampi",
       },
       pizza: {
-        name: "Pizza",
-        description: "Fatta con lievito madre",
+        name: "Pizza Margherita Verace",
+        description: "Pomodoro San Marzano, mozzarella di bufala campana DOP, basilico fresco",
       },
       carbonara: {
-        name: "Carbonara",
-        description: "Guanciale, pecorino, uova, pepe nero",
+        name: "Spaghettoni alla Carbonara",
+        description: "Guanciale croccante, pecorino romano DOP, uova biologiche, pepe nero",
       },
       spaghetti: {
-        name: "Spaghetti alle Vongole",
-        description: "Vongole veraci, aglio, prezzemolo, peperoncino",
+        name: "Spaghetti alle Vongole Veraci",
+        description: "Vongole veraci, aglio, prezzemolo, peperoncino, sfumati al vino bianco",
       },
       tiramisu: {
-        name: "Tiramisù",
-        description: "Ricetta della casa con caffè espresso",
+        name: "Tiramisù della Casa",
+        description: "Savoiardi artigianali, crema al mascarpone, caffè espresso, cacao amaro",
       },
     },
   },

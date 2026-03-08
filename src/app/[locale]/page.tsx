@@ -51,11 +51,12 @@ export default async function HomePage({ params }: Props) {
     price: '€12',
     category: key === 'carbonara' || key === 'spaghetti' ? 'primi' : key === 'tiramisu' ? 'dolci' : key,
     image: `/images/${key}.jpg`,
+    badges: (key === 'carbonara' ? ['special'] : key === 'spaghetti' ? ['gluten-free'] : key === 'tiramisu' ? ['vegetarian'] : []) as any[],
   }));
 
   return (
     <>
-      <NavBar items={navItems} cta={{ label: nav('contact'), href: '/contatti' }} />
+      <NavBar items={navItems} ctaPrimary={{ label: nav('contact'), href: '/contatti' }} />
       
       <Hero
         title={hero('title')}

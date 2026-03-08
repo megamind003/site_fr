@@ -24,7 +24,7 @@ export default async function ChiSiamoPage({ params }: { params: { locale: strin
 
   return (
     <>
-      <NavBar items={navItems} cta={{ label: 'Prenota', href: '/contatti' }} />
+      <NavBar items={navItems} ctaPrimary={{ label: 'Prenota', href: '/contatti' }} />
       
       <Section variant="alternate" className="pt-24">
         <Container>

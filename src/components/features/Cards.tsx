@@ -1,22 +1,47 @@
+'use client'
+
 import { cn } from '@/lib/utils'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
+import { Leaf, Vegan, WheatOff, Flame, Star, ArrowRight, Utensils, Heart, Wine } from 'lucide-react'
+import Link from 'next/link'
 
 export interface FeatureCardProps {
-  icon?: ReactNode
+  icon?: ReactNode | string
   title: string
   description: string
   className?: string
 }
 
+const FeatureIcon = ({ name }: { name: string }) => {
+  switch (name) {
+    case 'utensils':
+      return <Utensils className="w-full h-full" aria-label="Cucina Mista" />
+    case 'leaf':
+      return <Leaf className="w-full h-full" aria-label="Ingredienti Locali" />
+    case 'heart':
+      return <Heart className="w-full h-full" aria-label="Tradizione e Passione" />
+    case 'wine':
+      return <Wine className="w-full h-full" aria-label="Vini del Territorio" />
+    default:
+      return null
+  }
+}
+
 export function FeatureCard({ icon, title, description, className }: FeatureCardProps) {
   return (
     <div className={cn('p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow', className)}>
-      {icon && <div className="w-12 h-12 mb-4 text-brand-terracotta">{icon}</div>}
+      {icon && (
+        <div className="w-12 h-12 mb-4 text-brand-terracotta">
+          {typeof icon === 'string' ? <FeatureIcon name={icon} /> : icon}
+        </div>
+      )}
       <h3 className="text-xl font-bold font-display mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
   )
 }
+
+export type DietaryBadge = 'vegetarian' | 'vegan' | 'gluten-free' | 'spicy' | 'special'
 
 export interface DishCardProps {
   image: string
@@ -24,30 +49,80 @@ export interface DishCardProps {
   description: string
   price?: string
   category?: string
+  dietary?: DietaryBadge[]
+  ctaText?: string
+  ctaHref?: string
   className?: string
 }
 
-export function DishCard({ image, name, description, price, category, className }: DishCardProps) {
+const DietaryIcon = ({ type }: { type: DietaryBadge }) => {
+  switch (type) {
+    case 'vegetarian':
+      return <Leaf className="w-4 h-4 text-green-600" aria-label="Vegetarian" />
+    case 'vegan':
+      return <Vegan className="w-4 h-4 text-green-500" aria-label="Vegan" />
+    case 'gluten-free':
+      return <WheatOff className="w-4 h-4 text-amber-600" aria-label="Gluten-free" />
+    case 'spicy':
+      return <Flame className="w-4 h-4 text-red-500" aria-label="Spicy" />
+    case 'special':
+      return <Star className="w-4 h-4 text-yellow-500" aria-label="Chef's Special" />
+    default:
+      return null
+  }
+}
+
+export function DishCard({ image, name, description, price, category, dietary = [], ctaText, ctaHref, className }: DishCardProps) {
+  const [imgError, setImgError] = useState(false)
+
   return (
-    <div className={cn('group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all', className)}>
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        />
+    <div className={cn('group flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all bg-white h-full', className)}>
+      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
+        {!imgError ? (
+          <img
+            src={image}
+            alt={name}
+            onError={() => setImgError(true)}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-terracotta/20 to-brand-sand/50">
+            <span className="text-4xl opacity-50">🍽️</span>
+          </div>
+        )}
         {category && (
-          <span className="absolute top-3 right-3 px-3 py-1 bg-brand-terracotta text-white text-xs font-medium rounded-full">
+          <span className="absolute top-3 right-3 px-3 py-1 bg-brand-terracotta text-white text-xs font-medium rounded-full shadow-sm">
             {category}
           </span>
         )}
       </div>
-      <div className="p-5 bg-white">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="text-lg font-bold font-display">{name}</h3>
-          {price && <span className="text-brand-terracotta font-bold">{price}</span>}
+      <div className="p-5 flex flex-col flex-grow">
+        <div className="flex justify-between items-start mb-2 gap-2">
+          <h3 className="text-lg font-bold font-display leading-tight">{name}</h3>
+          {price && <span className="text-brand-terracotta font-bold whitespace-nowrap">{price}</span>}
         </div>
-        <p className="text-gray-600 text-sm">{description}</p>
+        
+        {dietary.length > 0 && (
+          <div className="flex gap-1.5 mb-3">
+            {dietary.map((badge) => (
+              <div key={badge} className="p-1 bg-gray-50 rounded-md shadow-sm border border-gray-100" title={badge}>
+                <DietaryIcon type={badge} />
+              </div>
+            ))}
+          </div>
+        )}
+        
+        <p className="text-gray-600 text-sm mb-4 flex-grow">{description}</p>
+        
+        {ctaText && ctaHref && (
+          <Link 
+            href={ctaHref}
+            className="inline-flex items-center text-sm font-semibold text-brand-terracotta hover:text-brand-terracotta/80 transition-colors mt-auto pt-2 border-t border-gray-100"
+          >
+            {ctaText}
+            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        )}
       </div>
     </div>
   )

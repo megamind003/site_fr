@@ -2,15 +2,17 @@ import { cn } from '@/lib/utils'
 import { Section, SectionHeader, SectionTitle, SectionSubtitle } from '@/components/ui/Section'
 import { Grid } from '@/components/layout/Grid'
 import { DishCard } from '@/components/features/Cards'
+import { DietaryType } from '@/components/ui/Badge'
 
 export interface Dish {
-  id: string
+  id: string | number
   name: string
   description: string
   price: string
   image: string
   category: string
   featured?: boolean
+  badges?: readonly DietaryType[]
 }
 
 export interface MenuSectionProps {

@@ -6,17 +6,17 @@
 /* Design System - Custom Properties */
 @theme {
   /* Colors - Brand Palette */
-  --color-brand-terraccotta-50: #FDF3F1;
-  --color-brand-terraccotta-100: #FAE5DE;
-  --color-brand-terraccotta-200: #F5C5B8;
-  --color-brand-terraccotta-300: #EF9F8A;
-  --color-brand-terraccotta-400: #E9755C;
-  --color-brand-terraccotta-500: #C15B3E;
-  --color-brand-terraccotta-600: #A3462D;
-  --color-brand-terraccotta-700: #853623;
-  --color-brand-terraccotta-800: #6A2D1F;
-  --color-brand-terraccotta-900: #58271D;
-  --color-brand-terraccotta-950: #2F120E;
+  --color-brand-terracotta-50: #FDF3F1;
+  --color-brand-terracotta-100: #FAE5DE;
+  --color-brand-terracotta-200: #F5C5B8;
+  --color-brand-terracotta-300: #EF9F8A;
+  --color-brand-terracotta-400: #E9755C;
+  --color-brand-terracotta-500: #BC4749;
+  --color-brand-terracotta-600: #A33B3D;
+  --color-brand-terracotta-700: #853623;
+  --color-brand-terracotta-800: #6A2D1F;
+  --color-brand-terracotta-900: #58271D;
+  --color-brand-terracotta-950: #2F120E;
   
   --color-brand-ocean-50: #F0F7F8;
   --color-brand-ocean-100: #DDEEF0;
@@ -99,7 +99,7 @@
 @layer components {
   /* Buttons */
   .btn-primary {
-    @apply bg-brand-terraccotta-500 hover:bg-brand-terraccotta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply bg-brand-terracotta-500 hover:bg-brand-terracotta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
   }
   
   .btn-secondary {
@@ -107,7 +107,7 @@
   }
   
   .btn-outline {
-    @apply border-2 border-brand-terraccotta-500 text-brand-terraccotta-500 hover:bg-brand-terraccotta-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+    @apply border-2 border-brand-terracotta-500 text-brand-terracotta-500 hover:bg-brand-terracotta-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
   }
   
   /* Cards */

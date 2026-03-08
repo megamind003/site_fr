@@ -1,24 +1,33 @@
-'use client'
+# Google Map Integration Implementation Plan
 
-import { useTranslations } from 'next-intl'
-import { NavBar } from '@/components/layout/NavBar'
-import { Section, SectionHeader, SectionTitle, SectionSubtitle } from '@/components/ui/Section'
-import { Container } from '@/components/layout/Grid'
-import { ReservationForm } from '@/components/features/ReservationForm'
+> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/menu', label: 'Menu' },
-  { href: '/chi-siamo', label: 'Chi Siamo' },
-  { href: '/contatti', label: 'Contatti', active: true },
-]
+**Goal:** Embed an interactive Google Map and restaurant contact information on the Contacts page.
+
+**Architecture:** Add a new section above the reservation form containing a responsive Google Maps iframe and a contact details block (address, phone, email).
+
+**Tech Stack:** Next.js, Tailwind CSS, next-intl.
+
+---
+
+### Task 1: Add Google Map and Contact Info Section
+
+**Files:**
+- Modify: `src/app/[locale]/contatti/page.tsx`
+
+**Step 1: Add the Map and Contact Info section above the ReservationForm**
+
+```tsx
+// src/app/[locale]/contatti/page.tsx
+
+// ... existing imports ...
 
 export default function ContattiPage() {
   const t = useTranslations('Contact')
 
   return (
     <>
-      <NavBar items={navItems} ctaPrimary={{ label: 'Prenota', href: '/contatti' }} />
+      <NavBar items={navItems} cta={{ label: 'Prenota', href: '/contatti' }} />
       
       <Section variant="alternate" className="pt-24">
         <Container>
@@ -29,9 +38,11 @@ export default function ContattiPage() {
         </Container>
       </Section>
 
+      {/* New Section for Map and Contact Info */}
       <Section>
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Map Column */}
             <div className="space-y-4">
               <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100">
                 <iframe
@@ -58,6 +69,7 @@ export default function ContattiPage() {
               </div>
             </div>
 
+            {/* Contact Info Column */}
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold mb-4">Dove Siamo</h3>
@@ -96,3 +108,16 @@ export default function ContattiPage() {
     </>
   )
 }
+```
+
+**Step 2: Run lsp_diagnostics to check for errors**
+
+Run: `lsp_diagnostics src/app/[locale]/contatti/page.tsx`
+Expected: No errors.
+
+**Step 3: Commit**
+
+```bash
+git add src/app/[locale]/contatti/page.tsx
+git commit -m "feat: add google map and contact info to contacts page"
+```
